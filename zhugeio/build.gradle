@@ -1,0 +1,122 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+// This is the libary version used when deploying the artifact
+
+android {
+    compileSdkVersion 25
+
+    defaultConfig {
+        minSdkVersion 10
+        targetSdkVersion 19
+        versionCode 2
+        versionName "3.2.4_zs+at"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions{
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:support-annotations:25.2.0'
+}
+
+version = "$android.defaultConfig.versionName"
+task clearRelease(type: Delete) {
+    delete "build/zhuge_android_v" + "$version"
+}
+task clearJar(type: Delete) {
+    delete "build/outputs/"
+}
+task copyMappingFile(type: Copy){
+    from('build/outputs/mapping/release/mapping.txt')
+    into('./')
+    include('mapping.txt')
+    rename('mapping.txt',"zhuge_v" + "$version" +"_mapping.txt")
+}
+task makeJar(type: Copy) {
+    from('build/intermediates/packaged-classes/debug/')
+    into('build/outputs/')
+    include('classes.jar')
+    rename ('classes.jar', "zhuge_Debug_v" + "$version" + ".jar")
+}
+task makeRelease(type: Copy) {
+    from('build/intermediates/packaged-classes/release/')
+    into('build/zhuge_android_v' + "$version" + '/lib')
+    include('classes.jar')
+    rename ('classes.jar', "zhuge_v" + "$version" + ".jar")
+}
+makeJar.dependsOn(clearJar, build)
+makeRelease.dependsOn(clearRelease, build, copyMappingFile)
+
+
+group = "com.zhuge.analysis"    // Maven Group ID for the artifact，一般填你唯一的包名
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'zhugeio'
+                // Add your description here
+                name 'zhugeSDK use for  statistics' 	//项目描述
+
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id '37degree'		//填写的一些基本信息
+                        name '37degree'
+                        email 'jiaokangsoft@gmail.com'
+                    }
+                }
+            }
+        }
+    }
+}
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    options.encoding = 'UTF-8'
+    options.charSet = 'UTF-8'
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "ZhugeIO"	//发布到JCenter上的项目名字
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+}
