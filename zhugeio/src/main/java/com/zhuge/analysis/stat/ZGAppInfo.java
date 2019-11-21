@@ -618,7 +618,7 @@ import javax.crypto.SecretKey;
             postData.put("owner", "zg");
             postData.put("pl", "and");
 
-            postData.put("sdkv", Constants.SDK_V);
+//            postData.put("sdkv", Constants.SDK_V);
             postData.put("tz", Utils.getTimeZone());
             JSONObject object = new JSONObject();
             object.put("did",did);
