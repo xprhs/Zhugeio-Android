@@ -35,8 +35,8 @@ public class Constants {
     /*package*/ static final int MESSAGE_SDK_UPLOAD_OK = 15;
     /*package*/ static final int MESSAGE_CHECK_APP_SEE_RETURN = 17;
     /*package*/ static final int MESSAGE_REVENUE_EVENT = 18;
-    
-    static final String SDK_V = "3.4";
+
+    static final String SDK_V = "3.4.1";
     static int UPLOAD_LIMIT_SIZE = 5;
     static long FLUSH_INTERVAL = 5*1000;
     static int MAX_LOCAL_SIZE = 500;
