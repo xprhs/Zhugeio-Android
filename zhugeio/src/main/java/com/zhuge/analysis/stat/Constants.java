@@ -35,7 +35,8 @@ public class Constants {
     /*package*/ static final int MESSAGE_SDK_UPLOAD_OK = 15;
     /*package*/ static final int MESSAGE_CHECK_APP_SEE_RETURN = 17;
     /*package*/ static final int MESSAGE_REVENUE_EVENT = 18;
-//    static final String SDK_V = BuildConfig.VERSION_NAME;
+    
+    static final String SDK_V = "3.4";
     static int UPLOAD_LIMIT_SIZE = 5;
     static long FLUSH_INTERVAL = 5*1000;
     static int MAX_LOCAL_SIZE = 500;
@@ -113,9 +114,10 @@ public class Constants {
 
     static final String SP_USER_DEFINE_EVENT = "zg_user_event";
 
-//    .append("SDK版本: ").append(SDK_V).append("\n")
+
     static void configString(StringBuilder stringBuilder) {
         stringBuilder.append("触发上传事件数: ").append(UPLOAD_LIMIT_SIZE).append("\n")
+                .append("SDK版本: ").append(SDK_V).append("\n")
                 .append("本地最大缓存数: ").append(MAX_LOCAL_SIZE).append("\n")
                 .append("每日上传事件数: ").append(SEND_SIZE).append("\n")
                 .append("会话间隔: ").append(SESSION_EXCEED).append("\n");
