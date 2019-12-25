@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.util.Iterator;
 
 /**
  * SQL Lite Database Adapter for Zhuge.
@@ -220,6 +221,61 @@ import java.io.File;
             mDbHelper.close();
         }
         return count;
+    }
+
+    /**
+     * 从数据库按照发生时间获取最近的50条事件。
+     * @return String[3]的数组，第一个是这次取得事件的最后一个索引，第二个为事件数据，第三个为这次取得的事件数。
+     * @param sessionID 当前会话ID
+     * @param deepPram  UTM信息
+     */
+    /*package*/ String[] getDataAttachDeepShare(long sessionID, JSONObject deepPram){
+        Cursor cursor = null;
+        String data = null;
+        String last_id = null; //当次获得事件的索引
+        int size = 0;//这次上传的事件数
+        try {
+            SQLiteDatabase db = mDbHelper.getReadableDatabase();
+            cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME+" ORDER BY "+KEY_CREATED_AT +
+                    " ASC LIMIT 50",null);
+            JSONArray array = new JSONArray();
+            while (cursor.moveToNext()){
+                if (cursor.isLast()){
+                    last_id = cursor.getString(cursor.getColumnIndex("_id"));
+                }
+                String s = cursor.getString(cursor.getColumnIndex(KEY_DATA));
+                JSONObject jsonObject = new JSONObject(s);
+                JSONObject pr = jsonObject.optJSONObject("pr");
+                long optLong = pr.optLong("$sid", -1);
+                if (optLong == sessionID){
+                    Iterator<String> keys = deepPram.keys();
+                    while (keys.hasNext()){
+                        String key = keys.next();
+                        pr.put(key,deepPram.opt(key));
+                    }
+                }
+//                jsonObject.put("pr",pr);
+                array.put(jsonObject);
+                size++;
+            }
+            if (array.length()>0){
+                data = array.toString();
+            }
+        }catch (Exception e){
+            ZGLogger.handleException(TAG,"无法从zhuge数据库中读取数据。",e);
+            //在没有对DB进行修改的情况下出现的错误，我们可以假定他可以自己恢复。在写操作时，出现错误，则删除文件。
+            last_id = null;
+            data = null;
+        }finally {
+            mDbHelper.close();
+            if (cursor != null){
+                cursor.close();
+            }
+        }
+        if (data!=null && last_id!=null){
+            return new String[]{last_id,data,Integer.toString(size)};
+        }
+        return null;
     }
 
     /**

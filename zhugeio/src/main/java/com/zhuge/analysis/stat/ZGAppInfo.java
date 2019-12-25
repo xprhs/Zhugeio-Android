@@ -61,6 +61,8 @@ import javax.crypto.SecretKey;
 
     private TelephonyManager tm;
 
+    JSONObject deepPram;
+
     private SecretKey key;
     private String RSA_key;
 
@@ -74,6 +76,7 @@ import javax.crypto.SecretKey;
     boolean debug = false;
 
     boolean isInMainThread = false;
+
     /*package*/ JSONArray screenSize;
     String apiPath = null;
     String ZGSeeUrl = null;
@@ -111,6 +114,109 @@ import javax.crypto.SecretKey;
         }
         this.appChannel = appChannel;
         return true;
+    }
+
+//    void setDeepPram(JSONObject obj){
+//        if (obj == null){
+//            return;
+//        }
+//        try {
+//
+//            deepPram = new JSONObject();
+//            String source = obj.optString(Constants.KEY_SOURCE,null);
+//            String medium = obj.optString(Constants.KEY_MEDIUM,null);
+//            String campaign = obj.optString(Constants.KEY_CAMPAIGN,null);
+//            String content = obj.optString(Constants.KEY_CONTENT,null);
+//            String term = obj.optString(Constants.KEY_TERM,null);
+//            String did = obj.optString(Constants.KEY_DID,null);
+//            if (!TextUtils.isEmpty(did)){
+//                this.did = did;
+//                if (globalSP == null)
+//                    return;
+//                String localDid = globalSP.getString(Constants.SP_DID,null);
+//                if (null != localDid && localDid.length()>0){
+//                    String[] strings = localDid.split("\\|");
+//                    String deviceId = strings[0];
+//                    if (strings.length >2){
+//                        this.mac = strings[1];
+//                        this.imei = strings[2];
+//                    }
+//                    if (!this. did.equals(deviceId)){
+//                        String deviceInfo = this.did+"|"+mac+"|"+imei;
+//                        globalSP.edit().putString(Constants.SP_DID,deviceInfo).apply();
+//                    }
+//                }
+//            }
+//            int tag_deep = obj.optInt("tag_deep", -1);
+//            deepPram.put("$" + Constants.KEY_TYPE, tag_deep);
+//
+//            deepPram.put("$" + Constants.KEY_SOURCE, source);
+//            deepPram.put("$" + Constants.KEY_MEDIUM, medium);
+//            deepPram.put("$" + Constants.KEY_CAMPAIGN, campaign);
+//            deepPram.put("$" + Constants.KEY_CONTENT, content);
+//            deepPram.put("$" + Constants.KEY_TERM, term);
+//            obj.remove(Constants.KEY_SOURCE);
+//            obj.remove(Constants.KEY_MEDIUM);
+//            obj.remove(Constants.KEY_CAMPAIGN);
+//            obj.remove(Constants.KEY_CONTENT);
+//            obj.remove(Constants.KEY_TERM);
+//            obj.remove("tag_deep");
+//
+//        }catch (Exception e){
+//            ZGLogger.logError(TAG,e.getMessage());
+//        }
+//    }
+
+    JSONObject setDeepPram(JSONObject obj){
+        if (obj == null){
+            return null;
+        }
+        try {
+
+            deepPram = new JSONObject();
+            String source = obj.optString(Constants.KEY_SOURCE,null);
+            String medium = obj.optString(Constants.KEY_MEDIUM,null);
+            String campaign = obj.optString(Constants.KEY_CAMPAIGN,null);
+            String content = obj.optString(Constants.KEY_CONTENT,null);
+            String term = obj.optString(Constants.KEY_TERM,null);
+            String did = obj.optString(Constants.KEY_DID,null);
+            if (!TextUtils.isEmpty(did)){
+                this.did = did;
+                if (globalSP == null)
+                    return null;
+                String localDid = globalSP.getString(Constants.SP_DID,null);
+                if (null != localDid && localDid.length()>0){
+                    String[] strings = localDid.split("\\|");
+                    String deviceId = strings[0];
+                    if (strings.length >2){
+                        this.mac = strings[1];
+                        this.imei = strings[2];
+                    }
+                    if (!this. did.equals(deviceId)){
+                        String deviceInfo = this.did+"|"+mac+"|"+imei;
+                        globalSP.edit().putString(Constants.SP_DID,deviceInfo).apply();
+                    }
+                }
+            }
+            int tag_deep = obj.optInt("tag_deep", -1);
+            deepPram.put("$" + Constants.KEY_TYPE, tag_deep);
+            deepPram.put("$" + Constants.KEY_SOURCE, source);
+            deepPram.put("$" + Constants.KEY_MEDIUM, medium);
+            deepPram.put("$" + Constants.KEY_CAMPAIGN, campaign);
+            deepPram.put("$" + Constants.KEY_CONTENT, content);
+            deepPram.put("$" + Constants.KEY_TERM, term);
+//            obj.remove(Constants.KEY_SOURCE);
+//            obj.remove(Constants.KEY_MEDIUM);
+//            obj.remove(Constants.KEY_CAMPAIGN);
+//            obj.remove(Constants.KEY_CONTENT);
+//            obj.remove(Constants.KEY_TERM);
+//            obj.remove("tag_deep");
+            return deepPram;
+
+        }catch (Exception e){
+            ZGLogger.logError(TAG,e.getMessage());
+            return  null;
+        }
     }
 
     void setUserDefinedEnableZGSee(boolean enable){
@@ -362,7 +468,8 @@ import javax.crypto.SecretKey;
         try {
             long info_ts = globalSP.getLong(Constants.SP_UPDATE_DEVICE_TIME, -1);
             long now_t = System.currentTimeMillis();
-            if (force || info_ts == -1 || (now_t / 86400000 - info_ts / 86400000) >= 1) {
+//            || info_ts == -1 || (now_t / 86400000 - info_ts / 86400000) >= 1
+            if (force) {
                 ZGJSONObject infoObject = new ZGJSONObject();
                 infoObject.put("dt", EVENT_TYPE_PLATFORM);
                 ZGJSONObject pr = dataCommon();
@@ -498,6 +605,44 @@ import javax.crypto.SecretKey;
         return se;
     }
 
+    ZGJSONObject buildCustomEvent(String eventName, JSONObject copy) {
+        try {
+            ZGJSONObject event = new ZGJSONObject();
+            event.put("dt",EVENT_TYPE_CUS);
+            ZGJSONObject pr = dataCommon();
+            pr.put("$sid",sessionID);
+            pr.put("$eid",eventName);
+            pr.put("$net",Integer.toString(connectivityUtils.getNetworkType()));
+            pr.put("$mnet",Integer.toString(tm.getNetworkType()));
+            pr.put("$ov", DeviceInfoUtils.getOSVersion());
+            sessionEventCount++;
+            globalSP.edit().putInt(Constants.SP_SESSION_COUNT,sessionEventCount).apply();
+            pr.put("$sc",sessionEventCount);
+            pr.put("$ps",myProcessName);
+            String deviceInfo = globalSP.getString(Constants.SP_USER_DEFINE_EVENT,null);
+            if (null != deviceInfo){
+                JSONObject userInfo = new JSONObject(deviceInfo);
+                Iterator keys = userInfo.keys();
+                while (keys.hasNext()){
+                    String key = String.valueOf(keys.next());
+                    pr.put(key,userInfo.get(key));
+                }
+            }
+            if (copy != null){
+                Iterator keys = copy.keys();
+                while (keys.hasNext()){
+                    String key = String.valueOf(keys.next());
+                    pr.put(key,copy.get(key));
+                }
+            }
+            event.put("pr",pr);
+            return event;
+        }catch (Exception e){
+            ZGLogger.handleException(TAG,"生成自定义事件出错，事件"+eventName+"将被丢弃。",e);
+        }
+        return null;
+    }
+
     ZGJSONObject buildRevenueEvent(String eventName, JSONObject copy) {
         try {
             ZGJSONObject event = new ZGJSONObject();
@@ -522,44 +667,6 @@ import javax.crypto.SecretKey;
                 }
             }
 //            ZGLogger.logMessage(TAG,copy.toString());
-            if (copy != null){
-                Iterator keys = copy.keys();
-                while (keys.hasNext()){
-                    String key = String.valueOf(keys.next());
-                    pr.put(key,copy.get(key));
-                }
-            }
-            event.put("pr",pr);
-            return event;
-        }catch (Exception e){
-            ZGLogger.handleException(TAG,"生成自定义事件出错，事件"+eventName+"将被丢弃。",e);
-        }
-        return null;
-    }
-
-    ZGJSONObject buildCustomEvent(String eventName, JSONObject copy) {
-        try {
-            ZGJSONObject event = new ZGJSONObject();
-            event.put("dt",EVENT_TYPE_CUS);
-            ZGJSONObject pr = dataCommon();
-            pr.put("$sid",sessionID);
-            pr.put("$eid",eventName);
-            pr.put("$net",Integer.toString(connectivityUtils.getNetworkType()));
-            pr.put("$mnet",Integer.toString(tm.getNetworkType()));
-            pr.put("$ov", DeviceInfoUtils.getOSVersion());
-            sessionEventCount++;
-            globalSP.edit().putInt(Constants.SP_SESSION_COUNT,sessionEventCount).apply();
-            pr.put("$sc",sessionEventCount);
-            pr.put("$ps",myProcessName);
-            String deviceInfo = globalSP.getString(Constants.SP_USER_DEFINE_EVENT,null);
-            if (null != deviceInfo){
-                JSONObject userInfo = new JSONObject(deviceInfo);
-                Iterator keys = userInfo.keys();
-                while (keys.hasNext()){
-                    String key = String.valueOf(keys.next());
-                    pr.put(key,userInfo.get(key));
-                }
-            }
             if (copy != null){
                 Iterator keys = copy.keys();
                 while (keys.hasNext()){
@@ -607,7 +714,31 @@ import javax.crypto.SecretKey;
     }
 
 
-    JSONObject wrapData(JSONArray events) {
+    JSONObject wrapDataWithString(String events) {
+        JSONObject postData = new JSONObject();
+        try {
+            postData.put("ak", appKey);
+            postData.put("data", new JSONArray(events));
+            postData.put("debug",debug?1:0);
+            postData.put("sln","itn");
+            postData.put("sdk", "zg_android");
+            postData.put("owner", "zg");
+            postData.put("pl", "and");
+
+            postData.put("sdkv", Constants.SDK_V);
+            postData.put("tz", Utils.getTimeZone());
+            JSONObject object = new JSONObject();
+            object.put("did",did);
+            postData.put("usr",object);
+            long now_t = System.currentTimeMillis();
+            postData.put("ut", Utils.timeStamp2Date(now_t));
+        } catch (Exception e) {
+            ZGLogger.handleException(TAG,"组装数据出错",e);
+        }
+        return postData;
+    }
+
+    JSONObject wrapDataWithArray(JSONArray events) {
         JSONObject postData = new JSONObject();
         try {
             postData.put("ak", appKey);

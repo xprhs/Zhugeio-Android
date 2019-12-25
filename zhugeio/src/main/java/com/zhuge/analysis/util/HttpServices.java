@@ -1,5 +1,7 @@
 package com.zhuge.analysis.util;
 
+import android.net.Uri;
+
 import com.zhuge.analysis.stat.Constants;
 
 import java.io.BufferedOutputStream;
@@ -13,6 +15,7 @@ import java.security.GeneralSecurityException;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.util.Map;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -73,6 +76,7 @@ public class HttpServices {
             return true;
         }
     }
+
 
     public byte[] sendRequest(String url, String backUrl, byte[] data){
         byte[] response = null;
@@ -149,6 +153,86 @@ public class HttpServices {
         return response;
     }
 
+    public byte[] requestApi(String url, String backUrl , Map<String, Object> params) {
+        byte[] response = null;
+        InputStream in = null;
+        OutputStream out = null;
+        BufferedOutputStream bout = null;
+        HttpURLConnection connection = null;
+        int retry = 0;
+        boolean success = false;
+        while (!success && retry < 3) {
+            try {
+                String apiUrl;
+                if (retry > 1 && backUrl!= null) {
+                    apiUrl = backUrl;
+                } else {
+                    apiUrl = url;
+                }
+                ZGLogger.logMessage(TAG,"retry "+retry+" : attempt request to :"+apiUrl);
+                URL remoteURL = new URL(apiUrl);
+                connection = (HttpURLConnection) remoteURL.openConnection();
+                if (connection instanceof HttpsURLConnection) {
+                    ((HttpsURLConnection) connection).setSSLSocketFactory(getSSLFactory());
+                    ((HttpsURLConnection) connection).setHostnameVerifier(mVerifier);
+                }
+                connection.setConnectTimeout(30000);
+                connection.setReadTimeout(30000);
+                if (null != params) {
+                    Uri.Builder builder = new Uri.Builder();
+                    for (Map.Entry<String, Object> param : params.entrySet()) {
+                        builder.appendQueryParameter(param.getKey(), param.getValue().toString());
+                    }
+                    byte[] query = builder.build().getEncodedQuery().getBytes("UTF-8");
+
+                    connection.setFixedLengthStreamingMode(query.length);
+                    connection.setDoOutput(true);
+                    connection.setRequestMethod("POST");
+                    out = connection.getOutputStream();
+                    bout = new BufferedOutputStream(out);
+                    bout.write(query);
+                    bout.flush();
+                    bout.close();
+                    bout = null;
+                    out.close();
+                    out = null;
+                }
+                in = connection.getInputStream();
+                response = slurp(in);
+                in.close();
+                in = null;
+                success = true;
+            } catch (final Exception e) {
+                ZGLogger.handleException(TAG, "上传数据出错："+e.getMessage(),e);
+                retry++;
+            } finally {
+                if (null != bout)
+                    try {
+                        bout.close();
+                    } catch (final IOException e) {
+                        ZGLogger.logMessage(TAG, "流关闭出错" + e.getMessage());
+                    }
+                if (null != out)
+                    try {
+                        out.close();
+                    } catch (final IOException e) {
+                        ZGLogger.logMessage(TAG, "流关闭出错" + e.getMessage());
+                    }
+                if (null != in)
+                    try {
+                        in.close();
+                    } catch (final IOException e) {
+                        ZGLogger.logMessage(TAG, "流关闭出错" + e.getMessage());
+                    }
+                if (null != connection)
+                    connection.disconnect();
+            }
+        }
+        if (retry >= 3) {
+            ZGLogger.logMessage(TAG, "重连三次仍然出错");
+        }
+        return response;
+    }
 
 
     private static byte[] slurp(final InputStream inputStream)

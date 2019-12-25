@@ -93,7 +93,6 @@ public class Utils {
     }
 
     /**
-     *
      * @param obj 要克隆的对象
      * @return 克隆的对象
      */
@@ -125,8 +124,10 @@ public class Utils {
         }
     }
 
-    /*
+    /**
      * 浅拷贝，能减小一点发生异常的概率
+     * @param obj 要克隆的对象
+     * @return 克隆的对象
      */
     public static JSONObject cloneJSONObject(final JSONObject obj) {
         if (obj == null) {
@@ -143,7 +144,9 @@ public class Utils {
                 String key = nameArray.optString(i);
                 Object value = obj.opt(key);
                 StringBuilder builder = new StringBuilder(key);
-                builder.insert(0,'_');
+                if (key.contains("$") == false) {
+                    builder.insert(0,'_');
+                }
                 copy.put(builder.toString(),value);
             }
             return copy;

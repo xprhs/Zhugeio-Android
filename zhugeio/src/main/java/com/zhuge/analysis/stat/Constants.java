@@ -5,7 +5,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
-//import com.zhuge.analysis.BuildConfig;
+import com.zhuge.analysis.BuildConfig;
 import com.zhuge.analysis.util.ZGLogger;
 
 /**
@@ -13,38 +13,63 @@ import com.zhuge.analysis.util.ZGLogger;
  * Created by Omen on 16/6/17.
  */
 public class Constants {
+
+
+    /*package*/ static final String KEY_SOURCE = "utm_source";
+    /*package*/ static final String KEY_MEDIUM = "utm_medium";
+    /*package*/ static final String KEY_CAMPAIGN = "utm_campaign";
+    /*package*/ static final String KEY_CONTENT = "utm_content";
+    /*package*/ static final String KEY_TERM = "utm_term";
+    /*package*/ static final String KEY_TYPE = "utm_type";
+    /*package*/ static final String KEY_DID = "$zg_did";
+
+
+    /**
+     * 收入事件 Name
+     */
+    public static final String ZhugeEventRevenue = "revenue";
+    /**
+     * 收入事件追踪 Property
+     */
+    public static final String ZhugeEventRevenuePrice = "price";
+    public static final String ZhugeEventRevenueProductID = "productID";
+    public static final String ZhugeEventRevenueProductQuantity = "productQuantity";
+    public static final String ZhugeEventRevenueType = "revenueType";
+    public static final String ZhugeEventRevenueTotalPrice = "total";
+
+
     /*package*/ static final int CODE_NEED_FLUSH = 0;
 
+    /*package*/ static final int MESSAGE_DEVICE_INFO = 1;
+    /*package*/ static final int MESSAGE_CHECK_SESSION = 2;
+    /*package*/ static final int MESSAGE_CUSTOM_EVENT = 3;
+    /*package*/ static final int MESSAGE_IDENTIFY_USER = 4;
+    /*package*/ static final int MESSAGE_FLUSH = 5;
+    /*package*/ static final int MESSAGE_NEED_SEND = 6;
+    /*package*/ static final int MESSAGE_UPDATE_SESSION = 7;
+    /*package*/ static final int MESSAGE_START_TRACK = 8;
+    /*package*/ static final int MESSAGE_END_TRACK = 9;
+    /*package*/ static final int MESSAGE_SET_EVENT_INFO = 10;
+    /*package*/ static final int MESSAGE_SET_DEVICE_INFO = 11;
+    /*package*/ static final int MESSAGE_SEND_SCREENSHOT = 12;
+    /*package*/ static final int MESSAGE_CHECK_APP_SEE = 13;
+    /*package*/ static final int MESSAGE_ZGSEE_UPLOAD_OK = 14;
+    /*package*/ static final int MESSAGE_ZGSEE_CHECK_LOCAL = 15;
+    /*package*/ static final int MESSAGE_SDK_UPLOAD_OK = 16;
+    /*package*/ static final int MESSAGE_AUTO_TRACK = 17;
+    /*package*/ static final int MESSAGE_CHECK_APP_SEE_RETURN = 18;
+    /*package*/ static final int MESSAGE_REVENUE_EVENT = 19;
 
-    /*package*/ static final int MESSAGE_DEVICE_INFO = 0;
-    /*package*/ static final int MESSAGE_CHECK_SESSION = 1;
-    /*package*/ static final int MESSAGE_CUSTOM_EVENT = 2;
-    /*package*/ static final int MESSAGE_IDENTIFY_USER = 3;
-    /*package*/ static final int MESSAGE_FLUSH = 4;
-    /*package*/ static final int MESSAGE_NEED_SEND = 5;
-    /*package*/ static final int MESSAGE_UPDATE_SESSION = 6;
-    /*package*/ static final int MESSAGE_START_TRACK = 7;
-    /*package*/ static final int MESSAGE_END_TRACK = 8;
-    /*package*/ static final int MESSAGE_SET_EVENT_INFO = 9;
-    /*package*/ static final int MESSAGE_SET_DEVICE_INFO = 10;
-    /*package*/ static final int MESSAGE_SEND_SCREENSHOT = 11;
-    /*package*/ static final int MESSAGE_AUTO_TRACK = 16;
-    /*package*/ static final int MESSAGE_CHECK_APP_SEE = 12;
-    /*package*/ static final int MESSAGE_ZGSEE_UPLOAD_OK = 13;
-    /*package*/ static final int MESSAGE_ZGSEE_CHECK_LOCAL = 14;
-    /*package*/ static final int MESSAGE_SDK_UPLOAD_OK = 15;
-    /*package*/ static final int MESSAGE_CHECK_APP_SEE_RETURN = 17;
-    /*package*/ static final int MESSAGE_REVENUE_EVENT = 18;
-
-    static final String SDK_V = "3.4.1";
-    static int UPLOAD_LIMIT_SIZE = 5;
+    static final String SDK_V = BuildConfig.VERSION_NAME;
+//    static int UPLOAD_LIMIT_SIZE = 5;
+    static int UPLOAD_LIMIT_SIZE = 1;
     static long FLUSH_INTERVAL = 5*1000;
     static int MAX_LOCAL_SIZE = 500;
     public static final int MAX_SEE_SESSION = 5;
     /**
      * 每天发送事件数
      */
-    static  int SEND_SIZE = 500;
+    static  int SEND_SIZE = 50000;
     static final boolean ENABLE_SESSION_TRACK = true;//当前默认开启，之后可能关闭st,se事件追踪
 
     public static String API_PATH = "https://u.zhugeapi.com/apipool";
@@ -114,18 +139,15 @@ public class Constants {
 
     static final String SP_USER_DEFINE_EVENT = "zg_user_event";
 
-
     static void configString(StringBuilder stringBuilder) {
-        stringBuilder.append("触发上传事件数: ").append(UPLOAD_LIMIT_SIZE).append("\n")
-                .append("SDK版本: ").append(SDK_V).append("\n")
+        stringBuilder.append("SDK版本: ").append(SDK_V).append("\n")
+                .append("触发上传事件数: ").append(UPLOAD_LIMIT_SIZE).append("\n")
                 .append("本地最大缓存数: ").append(MAX_LOCAL_SIZE).append("\n")
                 .append("每日上传事件数: ").append(SEND_SIZE).append("\n")
                 .append("会话间隔: ").append(SESSION_EXCEED).append("\n");
 
 
     }
-
-
     static void loadConfig(Context context){
         try {
             String packageName = context.getPackageName();
@@ -135,10 +157,11 @@ public class Constants {
                 metaData = new Bundle();
             }
             SESSION_EXCEED = (metaData.getInt("com.zhuge.config.SessionInterval",30))*1000; //会话间隔，配置以秒计算
-            UPLOAD_LIMIT_SIZE = metaData.getInt("com.zhuge.config.UploadLimit",5); //5条记录上传
+//            UPLOAD_LIMIT_SIZE = metaData.getInt("com.zhuge.config.UploadLimit",5); //5条记录上传
+            UPLOAD_LIMIT_SIZE = metaData.getInt("com.zhuge.config.UploadLimit",1); //1条记录上传
             FLUSH_INTERVAL = (metaData.getInt("com.zhuge.config.FlushInterval",5))*1000; //数据上传间隔，默认5秒
             MAX_LOCAL_SIZE = metaData.getInt("com.zhuge.config.MaxLocalSize",500); //本地最大缓存数，默认500
-            SEND_SIZE = metaData.getInt("com.zhuge.config.MaxSendSize",500); //每日最大上传数，默认500
+            SEND_SIZE = metaData.getInt("com.zhuge.config.MaxSendSize",50000); //每日最大上传数，默认500
         }catch (Exception e){
             ZGLogger.handleException("Zhuge.Constants","读取配置信息出错，将使用默认配置",e);
         }

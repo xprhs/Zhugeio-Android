@@ -74,6 +74,7 @@ public class CachedBitmap {
     /**
      * 将图像转换为base64编码的字符串
      * @param rootView 根view
+     * @param drawMosaic Bool
      * @param editableViewLocation 可编辑的view位置集合
      * @param currentSize 当前集合内可用数据的长度
      * @return base64String bitMap

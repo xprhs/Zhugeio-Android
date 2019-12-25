@@ -21,12 +21,12 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  * 逻辑处理，事件分发
  * Created by Omen on 16/9/9.
  */
 /*package*/ class ZGCore {
-
 
     private ZGWorker  zgWorker;
     private ZGHttpWorker  zgHttpWorker;
@@ -35,6 +35,8 @@ import java.util.Map;
     private final Map<String, Long> mEventTimings = new HashMap<>();
     private static final String TAG = "com.zhuge.ZGCore";
     private int foregroundActivities = 0;
+
+//    private boolean FlushGrant = false;
 
     private boolean real = false;
     private int permissionNet = 4;
@@ -111,6 +113,9 @@ import java.util.Map;
     /*package*/ void flush() {
         Message message = zgWorker.obtainMessage(Constants.MESSAGE_FLUSH);
         message.sendToTarget();
+//        if (!FlushGrant) {
+//            FlushGrant = grant;
+//        }
     }
 
     /**
@@ -231,6 +236,7 @@ import java.util.Map;
 
     private class ZGWorker extends Handler{
         private ZhugeDbAdapter dbAdapter;
+        private HttpServices httpService;
         private boolean sdkProcessing = false;
         private boolean appSeeProcessing = false;
         private long localEventSize = 0;
@@ -262,18 +268,6 @@ import java.util.Map;
             int stateCode = -1;
             switch (msg.what){
 
-                case Constants.MESSAGE_REVENUE_EVENT:
-
-                    EventDescription revenueDes = (EventDescription) msg.obj;
-                    String revenueName = revenueDes.eventName;
-                    JSONObject revenuePro = revenueDes.properties;
-
-                    ZGJSONObject revenueInfo = appInfo.buildRevenueEvent(revenueName,revenuePro);
-                    updateSessionActivity("收入事件更新会话");
-                    stateCode = addEvent(revenueInfo);
-
-                    break;
-
                 case Constants.MESSAGE_DEVICE_INFO:
 
                     ZGJSONObject deviceInfo = appInfo.buildDeviceInfo(mContext,msg.arg1 == 1);
@@ -299,6 +293,15 @@ import java.util.Map;
                     updateSessionActivity("自定义事件更新会话");
                     stateCode = addEvent(info);
                     break;
+
+                case Constants.MESSAGE_REVENUE_EVENT:
+                    EventDescription revenueDes = (EventDescription) msg.obj;
+                    String revenueName = revenueDes.eventName;
+                    JSONObject revenuePro = revenueDes.properties;
+                    ZGJSONObject revenueInfo = appInfo.buildRevenueEvent(revenueName,revenuePro);
+                    updateSessionActivity("收入事件更新会话");
+                    stateCode = addEvent(revenueInfo);
+                    break;
                 case Constants.MESSAGE_IDENTIFY_USER:
                     EventDescription userDes = (EventDescription) msg.obj;
                     String uid = userDes.eventName;
@@ -313,13 +316,22 @@ import java.util.Map;
                     boolean check = checkNetwork(true);
                     if (check && !sdkProcessing){
                         ZGLogger.logMessage(TAG," flush event");
-                        flushEvent();
+                        if (ZhugeSDK.getInstance().isInitDeepShare()) {
+                            flushEventWithDeepShare();
+                        } else {
+                            flushEvent();
+                        }
                     }
                     break;
+
                 case Constants.MESSAGE_NEED_SEND:
                     ZGJSONObject data = (ZGJSONObject) msg.obj;
                     addEvent(data);
-                    flushEvent();
+                    if (ZhugeSDK.getInstance().isInitDeepShare()) {
+                        flushEventWithDeepShare();
+                    } else {
+                        flushEvent();
+                    }
                     break;
                 case Constants.MESSAGE_UPDATE_SESSION:
                     String page = (String) msg.obj;
@@ -427,7 +439,7 @@ import java.util.Map;
             if (dataFromSee == null){
                 return;
             }
-            JSONObject jsonObject = appInfo.wrapData(dataFromSee.second);
+            JSONObject jsonObject = appInfo.wrapDataWithArray(dataFromSee.second);
             Message message = zgHttpWorker.obtainMessage(ZGHttpWorker.MESSAGE_UPLOAD_ZGSEE);
             message.obj = jsonObject;
             message.arg1 = Integer.parseInt(dataFromSee.first);
@@ -455,7 +467,7 @@ import java.util.Map;
                 if (appInfo.isZGSeeEnable() && real && (permissionNet == 1 || appInfo.connectivityUtils.getNetworkType() == permissionNet)){
                     JSONArray array = new JSONArray();
                     array.put(screenshot);
-                    JSONObject jsonObject = appInfo.wrapData(array);
+                    JSONObject jsonObject = appInfo.wrapDataWithArray(array);
                     Message message = zgHttpWorker.obtainMessage(ZGHttpWorker.MESSAGE_UPLOAD_ZGSEE);
                     message.obj = jsonObject;
                     message.arg1 = -1;
@@ -550,6 +562,7 @@ import java.util.Map;
             appInfo.sessionID = System.currentTimeMillis();
             if (Constants.ENABLE_SESSION_TRACK){
                 completeLastSession();
+                zgWorker.sendEmptyMessage(Constants.MESSAGE_DEVICE_INFO);//发送设备信息
                 ZGJSONObject st = appInfo.buildSessionStart(name);
                 if (null == st)
                     return;
@@ -594,6 +607,64 @@ import java.util.Map;
             return count;
         }
 
+        private int flushEventWithDeepShare() {
+            if (!appInfo.connectivityUtils.isOnline()){
+                ZGLogger.logMessage(TAG,"网络不可用，暂停发送。");
+                sendEmptyMessageDelayed(Constants.MESSAGE_FLUSH,30*1000);//30秒后重试
+                return -1;
+            }
+            if (today_send_count >= Constants.SEND_SIZE){
+                ZGLogger.logMessage(TAG,"当日已达最大上传数，暂停发送事件。");
+                return -1;
+            }
+            if (null == httpService){
+                httpService = new HttpServices();
+            }
+            String[] mDbData = dbAdapter.getDataAttachDeepShare(appInfo.sessionID,appInfo.deepPram);
+            if (null == mDbData){
+                return -1;
+            }
+            try {
+                final Map<String, Object> postMap = new HashMap<>();
+                JSONObject postData = appInfo.wrapDataWithString(mDbData[1]);
+                String data = Base64.encodeToString(Utils.compress(postData.toString().getBytes("UTF-8")),
+                        Base64.DEFAULT).replace("\r", "").replace("\n", "");
+                postMap.put("method", "event_statis_srv.upload");
+                postMap.put("compress", "1");
+                postMap.put("event", data);
+                String url , backUrl;
+                if (appInfo.apiPath != null){
+                    url = appInfo.apiPath;
+                    backUrl = appInfo.apiPathBack;
+                }else {
+                    url = Constants.API_PATH;
+                    backUrl = Constants.API_PATH_BACKUP;
+                }
+                byte[] returnByte = httpService.requestApi(url, backUrl,postMap);
+                if (returnByte == null){
+                    ZGLogger.logMessage(TAG,"发送失败，未获得服务端返回数据。");
+                    return -1;
+                }
+                String s = new String(returnByte, "UTF-8");
+                JSONObject responseDict = new JSONObject(s);
+                int return_code = responseDict.optInt("return_code");
+                if (return_code == 0){
+                    int count = Integer.parseInt(mDbData[2]);
+                    String id = mDbData[0];
+                    today_send_count += count;
+                    localEventSize -= count;
+                    dbAdapter.removeEvent(id);
+                    updateTodayCount();
+                    ZGLogger.logMessage(TAG,"发送成功，今日已发送"+today_send_count+"条数据。");
+                }else {
+                    ZGLogger.logMessage(TAG,"发送失败，返回信息："+responseDict.toString());
+                }
+                return (int) localEventSize;
+            } catch (Exception e) {
+                ZGLogger.handleException(TAG,"发送数据出错。",e);
+                return -1;
+            }
+        }
         private void flushEvent() {
             if (today_send_count >= Constants.SEND_SIZE){
                 ZGLogger.logMessage(TAG,"当日已达最大上传数，暂停发送事件。");
@@ -606,7 +677,7 @@ import java.util.Map;
             }
             try {
                 JSONArray array = mDbData.second;
-                JSONObject postData = appInfo.wrapData(array);
+                JSONObject postData = appInfo.wrapDataWithArray(array);
 
                 Message message = zgHttpWorker.obtainMessage(ZGHttpWorker.MESSAGE_UPLOAD_SDK);
                 message.obj = postData;

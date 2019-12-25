@@ -1,6 +1,7 @@
 package com.zhuge.analysis.stat;
 
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.os.Build;
@@ -10,6 +11,9 @@ import android.webkit.JavascriptInterface;
 import com.zhuge.analysis.util.Utils;
 import com.zhuge.analysis.util.ZGJSONObject;
 import com.zhuge.analysis.util.ZGLogger;
+
+import com.zhuge.analysis.deepshare.DeepShare;
+import com.zhuge.analysis.listeners.ZhugeInAppDataListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,7 +27,7 @@ import java.util.HashMap;
  * Created by Omen on 16/7/1.
  */
 @SuppressWarnings("unused")
-public class ZhugeSDK {
+public class ZhugeSDK implements ZhugeInAppDataListener {
 
     private static String TAG = "ZhugeSDK";
     private boolean initialized = false;
@@ -31,10 +35,30 @@ public class ZhugeSDK {
     private ZGAppInfo appInfo = null;
     private boolean enableException = false;
     private boolean enableAutoTrack = false;
+    private boolean initDeepShare = false;
+
+    private ZhugeInAppDataListener mListener;
 
     private static class SingletonHolder {
         private static final ZhugeSDK instance = new ZhugeSDK();
     }
+
+    @Override
+    public void zgOnFailed(String reason) {
+        if (mListener != null){
+            mListener.zgOnFailed(reason);
+        }
+    }
+
+    @Override
+    public void zgOnInAppDataReturned(JSONObject initParams) {
+        appInfo.setDeepPram(initParams);
+        if (mListener != null){
+            mListener.zgOnInAppDataReturned(initParams);
+        }
+        core.flush();
+    }
+
 
     public static ZhugeSDK getInstance() {
         return SingletonHolder.instance;
@@ -62,6 +86,16 @@ public class ZhugeSDK {
     boolean isEnableAutoTrack(){
         return enableAutoTrack;
     }
+
+
+    public void initDeepShare(){
+       this.initDeepShare = true;
+    }
+
+    boolean isInitDeepShare() {
+        return initDeepShare;
+    }
+
     /**
      * 设置输出的日志级别，默认为Log.INFO 4。
      * @param level 日志级别，2 - 6，对应verbose - error。不在这个范围内的数字将按边界处理。
@@ -110,6 +144,36 @@ public class ZhugeSDK {
         }
     }
 
+    public void initWithDeepShareAndParam(Activity activity, ZhugeParam param){
+        initDeepShare();
+        if (param.did != null && param.did.length() > 256){
+            ZGLogger.logError(TAG,"传入的did过长，SDK停止初始化。请检查did :"+param.did);
+            return;
+        }
+        if (appInfo.did == null && param.did !=null){
+            appInfo.did = param.did;
+        }
+        if (param.appKey!=null && param.appChannel!=null){
+            init(activity,param.appKey,param.appChannel,param.listener);
+        }else {
+            init(activity,param.listener);
+        }
+    }
+
+    public void init(Activity activity,ZhugeInAppDataListener userListener){
+        if (appInfo.getInfoFromManifest(activity)){
+            init(activity,appInfo.getAppKey(),appInfo.getAppChannel(),userListener);
+        }else {
+            ZGLogger.logError(TAG,"Manifest中未设置ZHUGE_APPKEY或ZHUGE_CHANNEL，Zhuge将无法统计数据。");
+        }
+    }
+
+//    @Deprecated
+    public void init(Activity activity,String appKey,String appChannel ,ZhugeInAppDataListener userListener) {
+        init(activity,appKey,appChannel);
+        mListener = userListener;
+    }
+
 
     public void init(Context context){
         if (initialized){
@@ -121,8 +185,11 @@ public class ZhugeSDK {
             ZGLogger.logError(TAG,"Manifest中未设置ZHUGE_APPKEY或ZHUGE_CHANNEL，Zhuge将无法统计数据。");
         }
     }
-
+    @Deprecated
     public void init(Context context,String appKey,String appChannel){
+        if(context instanceof Activity) {
+            DeepShare.init((Activity) context,appKey,this);
+        }
         if (initialized){
             return;
         }
@@ -165,11 +232,6 @@ public class ZhugeSDK {
     }
 
 
-    /**
-     * 追踪收入事件
-     * @param pro 事件属性
-     */
-
     public void trackRevenue(Context context, HashMap<String, Object> pro) {
         if (pro == null){
             ZGLogger.logError(TAG,"购买事件属性不能为空");
@@ -180,22 +242,24 @@ public class ZhugeSDK {
     }
 
     public void trackRevenue(Context context, JSONObject jsonObject) {
+
         try {
-            BigDecimal price = new BigDecimal(jsonObject.getString(ZhugeEventProperty.ZhugeEventRevenuePrice));
-            BigDecimal number = new BigDecimal(jsonObject.getString(ZhugeEventProperty.ZhugeEventRevenueProductQuantity));
+
+            BigDecimal price = new BigDecimal(jsonObject.getString(Constants.ZhugeEventRevenuePrice));
+            BigDecimal number = new BigDecimal(jsonObject.getString(Constants.ZhugeEventRevenueProductQuantity));
             BigDecimal total = price.multiply(number);
 
-            jsonObject.put(ZhugeEventProperty.ZhugeEventRevenuePrice,price);
-            jsonObject.put(ZhugeEventProperty.ZhugeEventRevenueProductQuantity,number);
-            jsonObject.put(ZhugeEventProperty.ZhugeEventRevenueTotalPrice, total);
+            jsonObject.put(Constants.ZhugeEventRevenuePrice,price);
+            jsonObject.put(Constants.ZhugeEventRevenueProductQuantity,number);
+            jsonObject.put(Constants.ZhugeEventRevenueTotalPrice, total);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
         JSONObject copy = Utils.conversionRevenuePropertiesKey(jsonObject);
         core.sendEventMessage(Constants.MESSAGE_REVENUE_EVENT,"revenue",copy);
     }
-
 
     public void track(Context context,String eventName){
         if (eventName == null || eventName.length() == 0){
