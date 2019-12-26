@@ -508,6 +508,13 @@ import javax.crypto.SecretKey;
 
     private ZGJSONObject dataCommon() throws JSONException {
         ZGJSONObject header = new ZGJSONObject();
+        if (deepPram != null){
+            Iterator<String> keys = deepPram.keys();
+            while (keys.hasNext()){
+                String key = keys.next();
+                header.put(key,deepPram.optString(key));
+            }
+        }
         header.put("$an",appName);
         header.put("$cn",appChannel);
         header.put("$cr",cr);

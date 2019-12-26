@@ -105,6 +105,20 @@ public class ZhugeSDK implements ZhugeInAppDataListener {
     }
 
     /**
+     * 自定义utm信息
+     * 参数为包含utm信息的JSONObject,其中key 为
+     * utm_source,
+     * utm_medium,
+     * utm_campaign,
+     * utm_content,
+     * utm_term
+     * @param utm 所要设置的utm信息
+     */
+    public void setUtm(JSONObject utm){
+        this.appInfo.setDeepPram(utm);
+    }
+
+    /**
      * 设置数据上传地址
      * @param url 默认情况下，数据上传的地址，不可为null
      * @param backupUrl 当默认地址上传失败时的备用地址，如果没有备用地址，可以设置为null
