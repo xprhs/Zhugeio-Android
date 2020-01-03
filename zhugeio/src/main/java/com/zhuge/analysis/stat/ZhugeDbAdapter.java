@@ -247,7 +247,7 @@ import java.util.Iterator;
                 JSONObject jsonObject = new JSONObject(s);
                 JSONObject pr = jsonObject.optJSONObject("pr");
                 long optLong = pr.optLong("$sid", -1);
-                if (optLong == sessionID){
+                if (optLong == sessionID && deepPram != null){
                     Iterator<String> keys = deepPram.keys();
                     while (keys.hasNext()){
                         String key = keys.next();
@@ -262,7 +262,7 @@ import java.util.Iterator;
                 data = array.toString();
             }
         }catch (Exception e){
-            ZGLogger.handleException(TAG,"无法从zhuge数据库中读取数据。",e);
+            ZGLogger.handleException(TAG,"无法从zhuge数据库中读取数据 == DeepShare",e);
             //在没有对DB进行修改的情况下出现的错误，我们可以假定他可以自己恢复。在写操作时，出现错误，则删除文件。
             last_id = null;
             data = null;
@@ -305,7 +305,7 @@ import java.util.Iterator;
             ZGLogger.logMessage(TAG,"get data from event , "+array.length()+" data and last id is "+last_id);
             pair = new Pair<>(last_id,array);
         }catch (Exception e){
-            ZGLogger.handleException(TAG,"无法从zhuge数据库中读取数据。",e);
+            ZGLogger.handleException(TAG,"无法从zhuge数据库中读取数据 == DefaultEvent",e);
 
         }finally {
           mDbHelper.close();

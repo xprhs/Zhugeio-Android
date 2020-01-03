@@ -255,13 +255,15 @@ import java.util.Map;
                 dbAdapter = new ZhugeDbAdapter(mContext);
                 //初始化本地缓存事件数
                 localEventSize = dbAdapter.getEventCount();
-                String todayInfo = appInfo.getGlobalSP().getString(Constants.SP_TODAY_COUNT, "");
-                if (!"".equals(todayInfo)) {
-                    String[] toInfo = todayInfo.split("\\|");
-                    if ((System.currentTimeMillis() / 1000 / 86400 - Integer.parseInt(toInfo[0])) != 0) {
-                        today_send_count = 0;
-                    } else {
-                        today_send_count = Integer.parseInt(toInfo[1]);
+                if (appInfo.getGlobalSP() != null) {
+                    String todayInfo = appInfo.getGlobalSP().getString(Constants.SP_TODAY_COUNT, "");
+                    if (!"".equals(todayInfo)) {
+                        String[] toInfo = todayInfo.split("\\|");
+                        if ((System.currentTimeMillis() / 1000 / 86400 - Integer.parseInt(toInfo[0])) != 0) {
+                            today_send_count = 0;
+                        } else {
+                            today_send_count = Integer.parseInt(toInfo[1]);
+                        }
                     }
                 }
             }
