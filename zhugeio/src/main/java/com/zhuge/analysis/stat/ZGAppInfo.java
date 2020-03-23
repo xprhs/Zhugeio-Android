@@ -372,6 +372,11 @@ import javax.crypto.SecretKey;
             if (null != localDid && localDid.length()>0){
                 String[] strings = localDid.split("\\|");
                 String deviceId = strings[0];
+
+                if (deviceId == null || deviceId == "") {
+                    deviceId = generateDid();
+                }
+
                 if (strings.length >2){
                     this.mac = strings[1];
                     this.imei = strings[2];
@@ -383,6 +388,8 @@ import javax.crypto.SecretKey;
                     String deviceInfo = this.did+"|"+mac+"|"+imei;
                     sp.edit().putString(Constants.SP_DID,deviceInfo).apply();
                 }
+
+
             }else if (packageName.equals(myProcessName)){
                 String mac = new WifiInfoUtils(context).getMacAddress();
                 this.mac = mac;
@@ -399,6 +406,8 @@ import javax.crypto.SecretKey;
                 String deviceInfo = this.did+"|"+mac+"|"+imei;
                 sp.edit().putString(Constants.SP_DID,deviceInfo).apply();
                 ZGLogger.logVerbose("生成的deviceInfo为"+deviceInfo);
+            } else {
+                this.did  = generateDid();
             }
         }catch (Exception e){
             ZGLogger.handleException("com.zhuge.AppInfo","计算用户唯一ID失败",e);
@@ -460,7 +469,7 @@ import javax.crypto.SecretKey;
         ZGLogger.logMessage(TAG,info.toString());
     }
 
-    ZGJSONObject buildDeviceInfo(Context context , boolean force) {
+    JSONObject buildDeviceInfo(Context context , boolean force) {
 
         if (!isInMainThread){
             return null;
@@ -470,9 +479,9 @@ import javax.crypto.SecretKey;
             long now_t = System.currentTimeMillis();
 //            || info_ts == -1 || (now_t / 86400000 - info_ts / 86400000) >= 1
             if (force) {
-                ZGJSONObject infoObject = new ZGJSONObject();
+                JSONObject infoObject = new JSONObject();
                 infoObject.put("dt", EVENT_TYPE_PLATFORM);
-                ZGJSONObject pr = dataCommon();
+                JSONObject pr = dataCommon();
                 String deviceInfo = globalSP.getString(Constants.SP_USER_DEFINE_DEVICE,null);
                 ZGLogger.logVerbose("获取自定义设备信息deviceInfo is "+deviceInfo);
                 if (null != deviceInfo){
@@ -506,8 +515,8 @@ import javax.crypto.SecretKey;
         }
     }
 
-    private ZGJSONObject dataCommon() throws JSONException {
-        ZGJSONObject header = new ZGJSONObject();
+    private JSONObject dataCommon() throws JSONException {
+        JSONObject header = new JSONObject();
         if (deepPram != null){
             Iterator<String> keys = deepPram.keys();
             while (keys.hasNext()){
@@ -523,6 +532,8 @@ import javax.crypto.SecretKey;
             header.put("$cuid",cuid);
         }
         header.put("$os","Android");
+        header.put("$url",ZhugeSDK.getInstance().url);
+        header.put("$ref",ZhugeSDK.getInstance().ref);
         header.put("$tz",Utils.getTimeZone());
         header.put("$vn",appVersion);
         return header;
@@ -532,13 +543,13 @@ import javax.crypto.SecretKey;
         return globalSP;
     }
 
-    ZGJSONObject buildSessionStart(String name) {
-        ZGJSONObject st = new ZGJSONObject();
+    JSONObject buildSessionStart(String name) {
+        JSONObject st = new JSONObject();
         try {
             sessionEventCount = 0;
             globalSP.edit().putInt(Constants.SP_SESSION_COUNT,sessionEventCount).apply();
             st.put("dt", EVENT_TYPE_SESSION_START);
-            ZGJSONObject infoObject = dataCommon();
+            JSONObject infoObject = dataCommon();
             infoObject.put("$net",Integer.toString(connectivityUtils.getNetworkType()));
             infoObject.put("$mnet",Integer.toString(tm.getNetworkType()));
             infoObject.put("$ov", DeviceInfoUtils.getOSVersion());
@@ -582,7 +593,7 @@ import javax.crypto.SecretKey;
         return st;
     }
 
-    ZGJSONObject buildSessionEnd() {
+    JSONObject buildSessionEnd() {
         String info = globalSP.getString(Constants.SP_LAST_SESSION_TIME, "");
         if (info.equals("")) {
             return null;
@@ -594,10 +605,10 @@ import javax.crypto.SecretKey;
         if (sid <=0 ){
             return null;
         }
-        ZGJSONObject se = new ZGJSONObject();
+        JSONObject se = new JSONObject();
         try {
             se.put("dt", EVENT_TYPE_SESSION_END);
-            ZGJSONObject pr = dataCommon();
+            JSONObject pr = dataCommon();
             pr.put("$sid", sid);
             pr.put("$dru", ts-sid);
             pr.put("$ov", DeviceInfoUtils.getOSVersion());
@@ -612,11 +623,11 @@ import javax.crypto.SecretKey;
         return se;
     }
 
-    ZGJSONObject buildCustomEvent(String eventName, JSONObject copy) {
+    JSONObject buildCustomEvent(String eventName, JSONObject copy) {
         try {
-            ZGJSONObject event = new ZGJSONObject();
+            JSONObject event = new JSONObject();
             event.put("dt",EVENT_TYPE_CUS);
-            ZGJSONObject pr = dataCommon();
+            JSONObject pr = dataCommon();
             pr.put("$sid",sessionID);
             pr.put("$eid",eventName);
             pr.put("$net",Integer.toString(connectivityUtils.getNetworkType()));
@@ -650,11 +661,11 @@ import javax.crypto.SecretKey;
         return null;
     }
 
-    ZGJSONObject buildRevenueEvent(String eventName, JSONObject copy) {
+    JSONObject buildRevenueEvent(String eventName, JSONObject copy) {
         try {
-            ZGJSONObject event = new ZGJSONObject();
+            JSONObject event = new JSONObject();
             event.put("dt",EVENT_TYPE_EXCEPTION);
-            ZGJSONObject pr = dataCommon();
+            JSONObject pr = dataCommon();
             pr.put("$sid",sessionID);
             pr.put("$eid",eventName);
             pr.put("$net",Integer.toString(connectivityUtils.getNetworkType()));
@@ -689,11 +700,11 @@ import javax.crypto.SecretKey;
         return null;
     }
 
-    ZGJSONObject buildIdentify(String uid, JSONObject copy) {
+    JSONObject buildIdentify(String uid, JSONObject copy) {
         try {
-            ZGJSONObject event = new ZGJSONObject();
+            JSONObject event = new JSONObject();
             event.put("dt",EVENT_TYPE_USER);
-            ZGJSONObject pr = dataCommon();
+            JSONObject pr = dataCommon();
             pr.put("$cuid", uid);
             cuid = uid;
             if (copy != null){
@@ -769,8 +780,8 @@ import javax.crypto.SecretKey;
         return postData;
     }
 
-    ZGJSONObject channelData(String channel, String userId) {
-        ZGJSONObject infoObject = new ZGJSONObject();
+    JSONObject channelData(String channel, String userId) {
+        JSONObject infoObject = new JSONObject();
         try {
             long now_t = System.currentTimeMillis();
             infoObject.put("dt", "um");
@@ -786,7 +797,7 @@ import javax.crypto.SecretKey;
         return infoObject;
     }
 
-    ZGJSONObject parseMid(int msgStat, ZhugeSDK.PushChannel channel, Object t) {
+    JSONObject parseMid(int msgStat, ZhugeSDK.PushChannel channel, Object t) {
         JSONObject js;
         String mid = "";
         try {
@@ -840,13 +851,13 @@ import javax.crypto.SecretKey;
         return dealMid(mid,channel.toString(),msgStat);
     }
 
-    private ZGJSONObject dealMid(String mid,String chan,int msgState) {
+    private JSONObject dealMid(String mid,String chan,int msgState) {
         if (null == mid || "".equals(mid) || "null".equals(mid) || mid.length() < 1){
             return null;
         }
         try {
             long now_t = System.currentTimeMillis();
-            ZGJSONObject infoObject = new ZGJSONObject();
+            JSONObject infoObject = new JSONObject();
             switch (msgState) {
                 case MSG_RECV:
                     infoObject.put("dt", "mrecv");
@@ -870,9 +881,9 @@ import javax.crypto.SecretKey;
         return null;
     }
 
-    ZGJSONObject buildException(Thread thread, Throwable e, boolean isForgound){
+    JSONObject buildException(Thread thread, Throwable e, boolean isForgound){
         try {
-            ZGJSONObject pr = dataCommon();
+            JSONObject pr = dataCommon();
             pr.put("$异常名称",e.getClass().getCanonicalName());
             pr.put("$异常描述",e.getLocalizedMessage());
             pr.put("$异常进程名称",myProcessName+":"+thread.getName());
@@ -888,7 +899,7 @@ import javax.crypto.SecretKey;
                 fillStackTrace(builder,e);
             }
             pr.put("$出错堆栈",builder.toString());
-            ZGJSONObject event = new ZGJSONObject();
+            JSONObject event = new JSONObject();
             event.put("dt",EVENT_TYPE_EXCEPTION);
             pr.put("$sid",sessionID);
             pr.put("$net",Integer.toString(connectivityUtils.getNetworkType()));
@@ -1021,9 +1032,9 @@ import javax.crypto.SecretKey;
         if (!pro.has("$eid")){
             ZGLogger.logError(TAG,"不合法的autoTrack事件"+pro.toString());
         }
-        JSONObject data = new ZGJSONObject();
+        JSONObject data = new JSONObject();
         try {
-            ZGJSONObject pr = dataCommon();
+            JSONObject pr = dataCommon();
             data.put("dt", EVENT_TYPE_EXCEPTION);
             pr.put("$sid", sessionID);
             Iterator keys = pro.keys();

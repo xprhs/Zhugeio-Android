@@ -36,6 +36,8 @@ public class ZhugeSDK implements ZhugeInAppDataListener {
     private boolean enableException = false;
     private boolean enableAutoTrack = false;
     private boolean initDeepShare = false;
+    public String url = "";
+    public String ref = "";
 
     private ZhugeInAppDataListener mListener;
 
@@ -67,6 +69,16 @@ public class ZhugeSDK implements ZhugeInAppDataListener {
     private ZhugeSDK() {
         appInfo = new ZGAppInfo();
         core = new ZGCore(appInfo);
+    }
+
+//    MAX_LOCAL_SIZE
+    public void setMaxLocalSize(int size) {
+        Constants.MAX_LOCAL_SIZE = size;
+    }
+
+//    SEND_SIZE
+    public  void setMaxSendSize(int size) {
+        Constants.SEND_SIZE = size;
     }
 
     public void openLog() {
@@ -327,8 +339,8 @@ public class ZhugeSDK implements ZhugeInAppDataListener {
             ZGLogger.logError(TAG,"调用setThirdPartyPushUserId之前，请先调用init。");
             return;
         }
-        ZGJSONObject zgjsonObject = appInfo.channelData(channel.toString(), userId);
-        core.sendObjMessage(Constants.MESSAGE_NEED_SEND,zgjsonObject);
+        JSONObject JSONObject = appInfo.channelData(channel.toString(), userId);
+        core.sendObjMessage(Constants.MESSAGE_NEED_SEND,JSONObject);
     }
 
     public void onMsgReaded(PushChannel channel, Object t) {
@@ -336,7 +348,7 @@ public class ZhugeSDK implements ZhugeInAppDataListener {
             ZGLogger.logError(TAG,"调用onMsgReaded之前，请先调用init。");
             return;
         }
-        ZGJSONObject info = appInfo.parseMid(ZGAppInfo.MSG_READ, channel, t);
+        JSONObject info = appInfo.parseMid(ZGAppInfo.MSG_READ, channel, t);
         if (null != info){
             core.sendObjMessage(Constants.MESSAGE_NEED_SEND,info);
         }
@@ -347,9 +359,9 @@ public class ZhugeSDK implements ZhugeInAppDataListener {
             ZGLogger.logError(TAG,"调用onMsgReaded之前，请先调用init。");
             return;
         }
-        ZGJSONObject zgjsonObject = appInfo.parseMid(ZGAppInfo.MSG_RECV, channel, t);
-        if (null != zgjsonObject){
-            core.sendObjMessage(Constants.MESSAGE_NEED_SEND,zgjsonObject);
+        JSONObject JSONObject = appInfo.parseMid(ZGAppInfo.MSG_RECV, channel, t);
+        if (null != JSONObject){
+            core.sendObjMessage(Constants.MESSAGE_NEED_SEND,JSONObject);
         }
 
     }

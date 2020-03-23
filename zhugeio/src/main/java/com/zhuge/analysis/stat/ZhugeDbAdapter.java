@@ -206,11 +206,12 @@ import java.util.Iterator;
             ContentValues contentValues = new ContentValues();
             contentValues.put(KEY_DATA,jsonObject.toString());
             contentValues.put(KEY_CREATED_AT, System.currentTimeMillis());
-            db.insert(TABLE_NAME, null, contentValues);
 
+            db.insert(TABLE_NAME, null, contentValues);
             cursor = db.rawQuery("SELECT COUNT(*) FROM "+TABLE_NAME,null);
             cursor.moveToFirst();
             count = cursor.getInt(0);
+
         }catch (Exception  e){
             ZGLogger.handleException(TAG,"向zhuge数据库中写入数据时出错，重新初始化zhuge数据库。",e);
             mDbHelper.deleteDatabase();
@@ -262,7 +263,7 @@ import java.util.Iterator;
                 data = array.toString();
             }
         }catch (Exception e){
-            ZGLogger.handleException(TAG,"无法从zhuge数据库中读取数据 == DeepShare",e);
+            ZGLogger.handleException(TAG,"无法从zhuge数据库中读取数据--DeepShare。",e);
             //在没有对DB进行修改的情况下出现的错误，我们可以假定他可以自己恢复。在写操作时，出现错误，则删除文件。
             last_id = null;
             data = null;
@@ -292,6 +293,7 @@ import java.util.Iterator;
             cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME+" ORDER BY "+KEY_CREATED_AT +
                     " ASC LIMIT 50",null);
             if (cursor.getCount() == 0){
+                mDbHelper.close();
                 return null;
             }
             while (cursor.moveToNext()){
@@ -305,7 +307,7 @@ import java.util.Iterator;
             ZGLogger.logMessage(TAG,"get data from event , "+array.length()+" data and last id is "+last_id);
             pair = new Pair<>(last_id,array);
         }catch (Exception e){
-            ZGLogger.handleException(TAG,"无法从zhuge数据库中读取数据 == DefaultEvent",e);
+            ZGLogger.handleException(TAG,"无法从zhuge数据库中读取数据--Default",e);
 
         }finally {
           mDbHelper.close();

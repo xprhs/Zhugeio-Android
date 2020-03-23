@@ -1,5 +1,5 @@
 # compiler: R8
-# compiler_version: 1.4.94
+# compiler_version: 1.4.77
 # min_api: 1
 com.zhuge.analysis.deepshare.Configuration -> com.zhuge.analysis.deepshare.a:
     com.zhuge.analysis.deepshare.Configuration config -> a
@@ -709,77 +709,77 @@ com.zhuge.analysis.stat.ZGAppInfo -> com.zhuge.analysis.stat.e:
     22:24:void upgradeSharedPrefsFrom(android.content.Context,java.lang.String):349:351 -> a
     25:27:void upgradeSharedPrefsFrom(android.content.Context,java.lang.String):353:355 -> a
     28:28:void upgradeSharedPrefsFrom(android.content.Context,java.lang.String):357:357 -> a
-    29:29:com.zhuge.analysis.util.ZGJSONObject buildDeviceInfo(android.content.Context,boolean):465:465 -> a
-    30:31:com.zhuge.analysis.util.ZGJSONObject buildDeviceInfo(android.content.Context,boolean):469:470 -> a
-    32:36:com.zhuge.analysis.util.ZGJSONObject buildDeviceInfo(android.content.Context,boolean):473:477 -> a
-    37:41:com.zhuge.analysis.util.ZGJSONObject buildDeviceInfo(android.content.Context,boolean):479:483 -> a
-    42:54:com.zhuge.analysis.util.ZGJSONObject buildDeviceInfo(android.content.Context,boolean):486:498 -> a
-    55:55:com.zhuge.analysis.util.ZGJSONObject buildDeviceInfo(android.content.Context,boolean):504:504 -> a
-    56:56:com.zhuge.analysis.util.ZGJSONObject buildSessionStart(java.lang.String):536:536 -> a
-    57:68:com.zhuge.analysis.util.ZGJSONObject buildSessionStart(java.lang.String):538:549 -> a
-    69:69:com.zhuge.analysis.util.ZGJSONObject buildSessionStart(java.lang.String):551:551 -> a
-    70:70:org.json.JSONObject buildSeeStart():557:557 -> a
-    71:78:org.json.JSONObject buildSeeStart():559:566 -> a
-    79:89:org.json.JSONObject buildSeeStart():568:578 -> a
-    90:90:org.json.JSONObject buildSeeStart():580:580 -> a
-    91:103:com.zhuge.analysis.util.ZGJSONObject buildCustomEvent(java.lang.String,org.json.JSONObject):617:629 -> a
-    104:108:com.zhuge.analysis.util.ZGJSONObject buildCustomEvent(java.lang.String,org.json.JSONObject):631:635 -> a
-    109:112:com.zhuge.analysis.util.ZGJSONObject buildCustomEvent(java.lang.String,org.json.JSONObject):639:642 -> a
-    113:113:com.zhuge.analysis.util.ZGJSONObject buildCustomEvent(java.lang.String,org.json.JSONObject):645:645 -> a
-    114:114:com.zhuge.analysis.util.ZGJSONObject buildCustomEvent(java.lang.String,org.json.JSONObject):648:648 -> a
-    115:115:org.json.JSONObject wrapDataWithArray(org.json.JSONArray):749:749 -> a
-    116:122:org.json.JSONObject wrapDataWithArray(org.json.JSONArray):751:757 -> a
-    123:129:org.json.JSONObject wrapDataWithArray(org.json.JSONArray):759:765 -> a
-    130:130:org.json.JSONObject wrapDataWithArray(org.json.JSONArray):767:767 -> a
-    131:131:com.zhuge.analysis.util.ZGJSONObject channelData(java.lang.String,java.lang.String):773:773 -> a
-    132:139:com.zhuge.analysis.util.ZGJSONObject channelData(java.lang.String,java.lang.String):775:782 -> a
-    140:140:com.zhuge.analysis.util.ZGJSONObject channelData(java.lang.String,java.lang.String):784:784 -> a
-    141:141:com.zhuge.analysis.util.ZGJSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):793:793 -> a
-    142:145:com.zhuge.analysis.util.ZGJSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):828:831 -> a
-    146:148:com.zhuge.analysis.util.ZGJSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):821:823 -> a
-    149:151:com.zhuge.analysis.util.ZGJSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):816:818 -> a
-    152:157:com.zhuge.analysis.util.ZGJSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):805:810 -> a
-    158:158:com.zhuge.analysis.util.ZGJSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):812:812 -> a
-    159:159:com.zhuge.analysis.util.ZGJSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):795:795 -> a
-    160:161:com.zhuge.analysis.util.ZGJSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):798:799 -> a
-    162:162:com.zhuge.analysis.util.ZGJSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):838:838 -> a
-    163:163:com.zhuge.analysis.util.ZGJSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):836:836 -> a
-    164:164:com.zhuge.analysis.util.ZGJSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):840:840 -> a
-    165:165:com.zhuge.analysis.util.ZGJSONObject dealMid(java.lang.String,java.lang.String,int):844:844 -> a
-    166:167:com.zhuge.analysis.util.ZGJSONObject dealMid(java.lang.String,java.lang.String,int):848:849 -> a
-    168:168:com.zhuge.analysis.util.ZGJSONObject dealMid(java.lang.String,java.lang.String,int):855:855 -> a
-    169:169:com.zhuge.analysis.util.ZGJSONObject dealMid(java.lang.String,java.lang.String,int):852:852 -> a
-    170:175:com.zhuge.analysis.util.ZGJSONObject dealMid(java.lang.String,java.lang.String,int):860:865 -> a
-    176:176:com.zhuge.analysis.util.ZGJSONObject dealMid(java.lang.String,java.lang.String,int):868:868 -> a
-    177:186:com.zhuge.analysis.util.ZGJSONObject buildException(java.lang.Thread,java.lang.Throwable,boolean):875:884 -> a
-    187:187:com.zhuge.analysis.util.ZGJSONObject buildException(java.lang.Thread,java.lang.Throwable,boolean):886:886 -> a
-    188:188:com.zhuge.analysis.util.ZGJSONObject buildException(java.lang.Thread,java.lang.Throwable,boolean):888:888 -> a
-    189:197:com.zhuge.analysis.util.ZGJSONObject buildException(java.lang.Thread,java.lang.Throwable,boolean):890:898 -> a
-    198:198:com.zhuge.analysis.util.ZGJSONObject buildException(java.lang.Thread,java.lang.Throwable,boolean):901:901 -> a
-    199:199:void fillStackTrace(java.lang.StringBuilder,java.lang.Throwable):907:907 -> a
-    200:204:void fillStackTrace(java.lang.StringBuilder,java.lang.Throwable):910:914 -> a
-    205:208:void fillStackTrace(java.lang.StringBuilder,java.lang.Throwable):918:921 -> a
-    209:209:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):930:930 -> a
-    210:212:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):933:935 -> a
-    213:214:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):937:938 -> a
-    215:215:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):940:940 -> a
-    216:216:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):944:944 -> a
-    217:221:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):946:950 -> a
-    222:227:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):952:957 -> a
-    228:230:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):959:961 -> a
-    231:232:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):963:964 -> a
-    233:233:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):966:966 -> a
-    234:244:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):968:978 -> a
-    245:247:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):980:982 -> a
-    248:248:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):984:984 -> a
-    249:259:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):986:996 -> a
-    260:260:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):999:999 -> a
-    261:261:org.json.JSONObject buildAutoTrackEvent(org.json.JSONObject):1018:1018 -> a
-    262:263:org.json.JSONObject buildAutoTrackEvent(org.json.JSONObject):1021:1022 -> a
-    264:264:org.json.JSONObject buildAutoTrackEvent(org.json.JSONObject):1024:1024 -> a
-    265:271:org.json.JSONObject buildAutoTrackEvent(org.json.JSONObject):1026:1032 -> a
-    272:272:org.json.JSONObject buildAutoTrackEvent(org.json.JSONObject):1034:1034 -> a
-    273:273:org.json.JSONObject buildAutoTrackEvent(org.json.JSONObject):1036:1036 -> a
+    29:29:org.json.JSONObject buildDeviceInfo(android.content.Context,boolean):474:474 -> a
+    30:31:org.json.JSONObject buildDeviceInfo(android.content.Context,boolean):478:479 -> a
+    32:36:org.json.JSONObject buildDeviceInfo(android.content.Context,boolean):482:486 -> a
+    37:41:org.json.JSONObject buildDeviceInfo(android.content.Context,boolean):488:492 -> a
+    42:54:org.json.JSONObject buildDeviceInfo(android.content.Context,boolean):495:507 -> a
+    55:55:org.json.JSONObject buildDeviceInfo(android.content.Context,boolean):513:513 -> a
+    56:56:org.json.JSONObject buildSessionStart(java.lang.String):547:547 -> a
+    57:68:org.json.JSONObject buildSessionStart(java.lang.String):549:560 -> a
+    69:69:org.json.JSONObject buildSessionStart(java.lang.String):562:562 -> a
+    70:70:org.json.JSONObject buildSeeStart():568:568 -> a
+    71:78:org.json.JSONObject buildSeeStart():570:577 -> a
+    79:89:org.json.JSONObject buildSeeStart():579:589 -> a
+    90:90:org.json.JSONObject buildSeeStart():591:591 -> a
+    91:103:org.json.JSONObject buildCustomEvent(java.lang.String,org.json.JSONObject):628:640 -> a
+    104:108:org.json.JSONObject buildCustomEvent(java.lang.String,org.json.JSONObject):642:646 -> a
+    109:112:org.json.JSONObject buildCustomEvent(java.lang.String,org.json.JSONObject):650:653 -> a
+    113:113:org.json.JSONObject buildCustomEvent(java.lang.String,org.json.JSONObject):656:656 -> a
+    114:114:org.json.JSONObject buildCustomEvent(java.lang.String,org.json.JSONObject):659:659 -> a
+    115:115:org.json.JSONObject wrapDataWithArray(org.json.JSONArray):760:760 -> a
+    116:122:org.json.JSONObject wrapDataWithArray(org.json.JSONArray):762:768 -> a
+    123:129:org.json.JSONObject wrapDataWithArray(org.json.JSONArray):770:776 -> a
+    130:130:org.json.JSONObject wrapDataWithArray(org.json.JSONArray):778:778 -> a
+    131:131:org.json.JSONObject channelData(java.lang.String,java.lang.String):784:784 -> a
+    132:139:org.json.JSONObject channelData(java.lang.String,java.lang.String):786:793 -> a
+    140:140:org.json.JSONObject channelData(java.lang.String,java.lang.String):795:795 -> a
+    141:141:org.json.JSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):804:804 -> a
+    142:145:org.json.JSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):839:842 -> a
+    146:148:org.json.JSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):832:834 -> a
+    149:151:org.json.JSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):827:829 -> a
+    152:157:org.json.JSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):816:821 -> a
+    158:158:org.json.JSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):823:823 -> a
+    159:159:org.json.JSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):806:806 -> a
+    160:161:org.json.JSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):809:810 -> a
+    162:162:org.json.JSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):849:849 -> a
+    163:163:org.json.JSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):847:847 -> a
+    164:164:org.json.JSONObject parseMid(int,com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):851:851 -> a
+    165:165:org.json.JSONObject dealMid(java.lang.String,java.lang.String,int):855:855 -> a
+    166:167:org.json.JSONObject dealMid(java.lang.String,java.lang.String,int):859:860 -> a
+    168:168:org.json.JSONObject dealMid(java.lang.String,java.lang.String,int):866:866 -> a
+    169:169:org.json.JSONObject dealMid(java.lang.String,java.lang.String,int):863:863 -> a
+    170:175:org.json.JSONObject dealMid(java.lang.String,java.lang.String,int):871:876 -> a
+    176:176:org.json.JSONObject dealMid(java.lang.String,java.lang.String,int):879:879 -> a
+    177:186:org.json.JSONObject buildException(java.lang.Thread,java.lang.Throwable,boolean):886:895 -> a
+    187:187:org.json.JSONObject buildException(java.lang.Thread,java.lang.Throwable,boolean):897:897 -> a
+    188:188:org.json.JSONObject buildException(java.lang.Thread,java.lang.Throwable,boolean):899:899 -> a
+    189:197:org.json.JSONObject buildException(java.lang.Thread,java.lang.Throwable,boolean):901:909 -> a
+    198:198:org.json.JSONObject buildException(java.lang.Thread,java.lang.Throwable,boolean):912:912 -> a
+    199:199:void fillStackTrace(java.lang.StringBuilder,java.lang.Throwable):918:918 -> a
+    200:204:void fillStackTrace(java.lang.StringBuilder,java.lang.Throwable):921:925 -> a
+    205:208:void fillStackTrace(java.lang.StringBuilder,java.lang.Throwable):929:932 -> a
+    209:209:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):941:941 -> a
+    210:212:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):944:946 -> a
+    213:214:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):948:949 -> a
+    215:215:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):951:951 -> a
+    216:216:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):955:955 -> a
+    217:221:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):957:961 -> a
+    222:227:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):963:968 -> a
+    228:230:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):970:972 -> a
+    231:232:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):974:975 -> a
+    233:233:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):977:977 -> a
+    234:244:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):979:989 -> a
+    245:247:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):991:993 -> a
+    248:248:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):995:995 -> a
+    249:259:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):997:1007 -> a
+    260:260:org.json.JSONObject buildScreenshot(com.zhuge.analysis.stat.ZGCore$ScreenshotInfo):1010:1010 -> a
+    261:261:org.json.JSONObject buildAutoTrackEvent(org.json.JSONObject):1029:1029 -> a
+    262:263:org.json.JSONObject buildAutoTrackEvent(org.json.JSONObject):1032:1033 -> a
+    264:264:org.json.JSONObject buildAutoTrackEvent(org.json.JSONObject):1035:1035 -> a
+    265:271:org.json.JSONObject buildAutoTrackEvent(org.json.JSONObject):1037:1043 -> a
+    272:272:org.json.JSONObject buildAutoTrackEvent(org.json.JSONObject):1045:1045 -> a
+    273:273:org.json.JSONObject buildAutoTrackEvent(org.json.JSONObject):1047:1047 -> a
     1:1:boolean setAppChannel(java.lang.String):112:112 -> b
     2:2:boolean setAppChannel(java.lang.String):115:115 -> b
     3:12:org.json.JSONObject setDeepPram(org.json.JSONObject):176:185 -> b
@@ -794,35 +794,38 @@ com.zhuge.analysis.stat.ZGAppInfo -> com.zhuge.analysis.stat.e:
     38:39:void initAppInfo(android.content.Context):274:275 -> b
     40:40:void initAppInfo(android.content.Context):277:277 -> b
     41:41:void initAppInfo(android.content.Context):280:280 -> b
-    42:43:com.zhuge.analysis.util.ZGJSONObject buildSessionEnd():586:587 -> b
-    44:47:com.zhuge.analysis.util.ZGJSONObject buildSessionEnd():590:593 -> b
-    48:48:com.zhuge.analysis.util.ZGJSONObject buildSessionEnd():597:597 -> b
-    49:57:com.zhuge.analysis.util.ZGJSONObject buildSessionEnd():599:607 -> b
-    58:58:com.zhuge.analysis.util.ZGJSONObject buildSessionEnd():609:609 -> b
-    59:63:com.zhuge.analysis.util.ZGJSONObject buildIdentify(java.lang.String,org.json.JSONObject):694:698 -> b
-    64:67:com.zhuge.analysis.util.ZGJSONObject buildIdentify(java.lang.String,org.json.JSONObject):700:703 -> b
-    68:68:com.zhuge.analysis.util.ZGJSONObject buildIdentify(java.lang.String,org.json.JSONObject):706:706 -> b
-    69:69:com.zhuge.analysis.util.ZGJSONObject buildIdentify(java.lang.String,org.json.JSONObject):709:709 -> b
+    42:43:org.json.JSONObject buildSessionEnd():597:598 -> b
+    44:47:org.json.JSONObject buildSessionEnd():601:604 -> b
+    48:48:org.json.JSONObject buildSessionEnd():608:608 -> b
+    49:57:org.json.JSONObject buildSessionEnd():610:618 -> b
+    58:58:org.json.JSONObject buildSessionEnd():620:620 -> b
+    59:63:org.json.JSONObject buildIdentify(java.lang.String,org.json.JSONObject):705:709 -> b
+    64:67:org.json.JSONObject buildIdentify(java.lang.String,org.json.JSONObject):711:714 -> b
+    68:68:org.json.JSONObject buildIdentify(java.lang.String,org.json.JSONObject):717:717 -> b
+    69:69:org.json.JSONObject buildIdentify(java.lang.String,org.json.JSONObject):720:720 -> b
     1:1:boolean setAppKey(java.lang.String):104:104 -> c
     2:2:boolean setAppKey(java.lang.String):107:107 -> c
     3:3:java.lang.String getAppChannel():249:249 -> c
     4:6:void initDeviceInfo(android.content.Context):362:364 -> c
     7:8:void initDeviceInfo(android.content.Context):366:367 -> c
     9:10:void initDeviceInfo(android.content.Context):369:370 -> c
-    11:16:void initDeviceInfo(android.content.Context):372:377 -> c
-    17:18:void initDeviceInfo(android.content.Context):379:380 -> c
-    19:21:void initDeviceInfo(android.content.Context):382:384 -> c
-    22:25:void initDeviceInfo(android.content.Context):386:389 -> c
-    26:26:void initDeviceInfo(android.content.Context):391:391 -> c
-    27:28:void initDeviceInfo(android.content.Context):393:394 -> c
-    29:30:void initDeviceInfo(android.content.Context):396:397 -> c
-    31:33:void initDeviceInfo(android.content.Context):399:401 -> c
-    34:34:void initDeviceInfo(android.content.Context):404:404 -> c
-    35:47:com.zhuge.analysis.util.ZGJSONObject buildRevenueEvent(java.lang.String,org.json.JSONObject):655:667 -> c
-    48:52:com.zhuge.analysis.util.ZGJSONObject buildRevenueEvent(java.lang.String,org.json.JSONObject):669:673 -> c
-    53:56:com.zhuge.analysis.util.ZGJSONObject buildRevenueEvent(java.lang.String,org.json.JSONObject):678:681 -> c
-    57:57:com.zhuge.analysis.util.ZGJSONObject buildRevenueEvent(java.lang.String,org.json.JSONObject):684:684 -> c
-    58:58:com.zhuge.analysis.util.ZGJSONObject buildRevenueEvent(java.lang.String,org.json.JSONObject):687:687 -> c
+    11:13:void initDeviceInfo(android.content.Context):372:374 -> c
+    14:14:void initDeviceInfo(android.content.Context):377:377 -> c
+    15:17:void initDeviceInfo(android.content.Context):380:382 -> c
+    18:19:void initDeviceInfo(android.content.Context):384:385 -> c
+    20:22:void initDeviceInfo(android.content.Context):387:389 -> c
+    23:26:void initDeviceInfo(android.content.Context):393:396 -> c
+    27:27:void initDeviceInfo(android.content.Context):398:398 -> c
+    28:29:void initDeviceInfo(android.content.Context):400:401 -> c
+    30:31:void initDeviceInfo(android.content.Context):403:404 -> c
+    32:34:void initDeviceInfo(android.content.Context):406:408 -> c
+    35:35:void initDeviceInfo(android.content.Context):410:410 -> c
+    36:36:void initDeviceInfo(android.content.Context):413:413 -> c
+    37:49:org.json.JSONObject buildRevenueEvent(java.lang.String,org.json.JSONObject):666:678 -> c
+    50:54:org.json.JSONObject buildRevenueEvent(java.lang.String,org.json.JSONObject):680:684 -> c
+    55:58:org.json.JSONObject buildRevenueEvent(java.lang.String,org.json.JSONObject):689:692 -> c
+    59:59:org.json.JSONObject buildRevenueEvent(java.lang.String,org.json.JSONObject):695:695 -> c
+    60:60:org.json.JSONObject buildRevenueEvent(java.lang.String,org.json.JSONObject):698:698 -> c
     1:1:void setRSAMd5(java.lang.String):245:245 -> d
     2:2:java.lang.String getAppKey():253:253 -> d
     3:14:void initGlobalSettingFile(android.content.Context):285:296 -> d
@@ -832,27 +835,27 @@ com.zhuge.analysis.stat.ZGAppInfo -> com.zhuge.analysis.stat.e:
     1:2:void upgradeSharedPrefs(android.content.Context):308:309 -> e
     3:4:void upgradeSharedPrefs(android.content.Context):312:313 -> e
     5:7:void upgradeSharedPrefs(android.content.Context):317:319 -> e
-    8:8:java.lang.String getDid():716:716 -> e
-    9:9:org.json.JSONObject wrapDataWithString(java.lang.String):725:725 -> e
-    10:16:org.json.JSONObject wrapDataWithString(java.lang.String):727:733 -> e
-    17:23:org.json.JSONObject wrapDataWithString(java.lang.String):735:741 -> e
-    24:24:org.json.JSONObject wrapDataWithString(java.lang.String):743:743 -> e
-    1:1:android.content.SharedPreferences getGlobalSP():532:532 -> f
-    1:1:long getSessionID():720:720 -> g
+    8:8:java.lang.String getDid():727:727 -> e
+    9:9:org.json.JSONObject wrapDataWithString(java.lang.String):736:736 -> e
+    10:16:org.json.JSONObject wrapDataWithString(java.lang.String):738:744 -> e
+    17:23:org.json.JSONObject wrapDataWithString(java.lang.String):746:752 -> e
+    24:24:org.json.JSONObject wrapDataWithString(java.lang.String):754:754 -> e
+    1:1:android.content.SharedPreferences getGlobalSP():543:543 -> f
+    1:1:long getSessionID():731:731 -> g
     1:1:boolean isZGSeeEnable():232:232 -> h
-    1:1:void logInitInfo():446:446 -> i
-    2:13:void logInitInfo():449:460 -> i
+    1:1:void logInitInfo():455:455 -> i
+    2:13:void logInitInfo():458:469 -> i
     1:1:boolean needMosaic():257:257 -> j
-    1:3:boolean updateZGSeeState():1010:1012 -> k
-    1:6:com.zhuge.analysis.util.ZGJSONObject dataCommon():510:515 -> l
-    7:12:com.zhuge.analysis.util.ZGJSONObject dataCommon():518:523 -> l
-    13:15:com.zhuge.analysis.util.ZGJSONObject dataCommon():525:527 -> l
-    1:3:java.lang.String generateDid():413:415 -> m
-    4:25:java.lang.String generateDid():417:438 -> m
-    26:26:java.lang.String generateDid():442:442 -> m
+    1:3:boolean updateZGSeeState():1021:1023 -> k
+    1:6:org.json.JSONObject dataCommon():519:524 -> l
+    7:12:org.json.JSONObject dataCommon():527:532 -> l
+    13:17:org.json.JSONObject dataCommon():534:538 -> l
+    1:3:java.lang.String generateDid():422:424 -> m
+    4:25:java.lang.String generateDid():426:447 -> m
+    26:26:java.lang.String generateDid():451:451 -> m
 com.zhuge.analysis.stat.ZGAppInfo$1 -> com.zhuge.analysis.stat.d:
     int[] $SwitchMap$com$zhuge$analysis$stat$ZhugeSDK$PushChannel -> a
-    1:1:void <clinit>():793:793 -> <clinit>
+    1:1:void <clinit>():804:804 -> <clinit>
 com.zhuge.analysis.stat.ZGCore -> com.zhuge.analysis.stat.f:
     android.content.Context mContext -> c
     com.zhuge.analysis.stat.ZGAppInfo appInfo -> d
@@ -919,35 +922,35 @@ com.zhuge.analysis.stat.ZGCore$ScreenshotInfo -> com.zhuge.analysis.stat.f$b:
 com.zhuge.analysis.stat.ZGCore$ZGHttpWorker -> com.zhuge.analysis.stat.f$c:
     com.zhuge.analysis.util.HttpServices httpService -> a
     com.zhuge.analysis.stat.ZGCore this$0 -> b
-    1:3:void <init>(com.zhuge.analysis.stat.ZGCore,android.os.Looper):709:711 -> <init>
-    1:7:void uploadSDKData(org.json.JSONObject,int,int):737:743 -> a
-    8:10:void uploadSDKData(org.json.JSONObject,int,int):746:748 -> a
-    11:12:void uploadSDKData(org.json.JSONObject,int,int):750:751 -> a
-    13:16:void uploadSDKData(org.json.JSONObject,int,int):753:756 -> a
-    17:17:void uploadSDKData(org.json.JSONObject,int,int):765:765 -> a
-    18:18:void uploadSDKData(org.json.JSONObject,int,int):767:767 -> a
-    19:19:void uploadSDKData(org.json.JSONObject,int,int):762:762 -> a
-    20:20:void uploadSDKData(org.json.JSONObject,int,int):767:767 -> a
-    21:21:void uploadSDKData(org.json.JSONObject,int,int):769:769 -> a
-    22:22:void checkAppSee():775:775 -> a
-    23:23:void checkAppSee():778:778 -> a
-    24:25:void checkAppSee():780:781 -> a
-    26:27:void checkAppSee():784:785 -> a
-    28:30:void checkAppSee():787:789 -> a
-    31:31:void checkAppSee():791:791 -> a
-    32:32:void uploadZGSee(org.json.JSONObject,int):798:798 -> a
-    33:36:void uploadZGSee(org.json.JSONObject,int):800:803 -> a
-    37:38:void uploadZGSee(org.json.JSONObject,int):805:806 -> a
-    39:39:void uploadZGSee(org.json.JSONObject,int):808:808 -> a
-    40:42:void uploadZGSee(org.json.JSONObject,int):810:812 -> a
-    43:43:void uploadZGSee(org.json.JSONObject,int):818:818 -> a
-    44:44:void uploadZGSee(org.json.JSONObject,int):815:815 -> a
-    45:45:void uploadZGSee(org.json.JSONObject,int):820:820 -> a
-    46:46:void uploadZGSee(org.json.JSONObject,int):822:822 -> a
-    1:1:void handleMessage(android.os.Message):716:716 -> handleMessage
-    2:2:void handleMessage(android.os.Message):729:729 -> handleMessage
-    3:4:void handleMessage(android.os.Message):723:724 -> handleMessage
-    5:6:void handleMessage(android.os.Message):718:719 -> handleMessage
+    1:3:void <init>(com.zhuge.analysis.stat.ZGCore,android.os.Looper):711:713 -> <init>
+    1:7:void uploadSDKData(org.json.JSONObject,int,int):739:745 -> a
+    8:10:void uploadSDKData(org.json.JSONObject,int,int):748:750 -> a
+    11:12:void uploadSDKData(org.json.JSONObject,int,int):752:753 -> a
+    13:16:void uploadSDKData(org.json.JSONObject,int,int):755:758 -> a
+    17:17:void uploadSDKData(org.json.JSONObject,int,int):767:767 -> a
+    18:18:void uploadSDKData(org.json.JSONObject,int,int):769:769 -> a
+    19:19:void uploadSDKData(org.json.JSONObject,int,int):764:764 -> a
+    20:20:void uploadSDKData(org.json.JSONObject,int,int):769:769 -> a
+    21:21:void uploadSDKData(org.json.JSONObject,int,int):771:771 -> a
+    22:22:void checkAppSee():777:777 -> a
+    23:23:void checkAppSee():780:780 -> a
+    24:25:void checkAppSee():782:783 -> a
+    26:27:void checkAppSee():786:787 -> a
+    28:30:void checkAppSee():789:791 -> a
+    31:31:void checkAppSee():793:793 -> a
+    32:32:void uploadZGSee(org.json.JSONObject,int):800:800 -> a
+    33:36:void uploadZGSee(org.json.JSONObject,int):802:805 -> a
+    37:38:void uploadZGSee(org.json.JSONObject,int):807:808 -> a
+    39:39:void uploadZGSee(org.json.JSONObject,int):810:810 -> a
+    40:42:void uploadZGSee(org.json.JSONObject,int):812:814 -> a
+    43:43:void uploadZGSee(org.json.JSONObject,int):820:820 -> a
+    44:44:void uploadZGSee(org.json.JSONObject,int):817:817 -> a
+    45:45:void uploadZGSee(org.json.JSONObject,int):822:822 -> a
+    46:46:void uploadZGSee(org.json.JSONObject,int):824:824 -> a
+    1:1:void handleMessage(android.os.Message):718:718 -> handleMessage
+    2:2:void handleMessage(android.os.Message):731:731 -> handleMessage
+    3:4:void handleMessage(android.os.Message):725:726 -> handleMessage
+    5:6:void handleMessage(android.os.Message):720:721 -> handleMessage
 com.zhuge.analysis.stat.ZGCore$ZGWorker -> com.zhuge.analysis.stat.f$d:
     long today_send_count -> f
     long localEventSize -> e
@@ -958,165 +961,170 @@ com.zhuge.analysis.stat.ZGCore$ZGWorker -> com.zhuge.analysis.stat.f$d:
     boolean appSeeProcessing -> d
     1:2:void <init>(com.zhuge.analysis.stat.ZGCore,android.os.Looper):244:245 -> <init>
     3:6:void <init>(com.zhuge.analysis.stat.ZGCore,android.os.Looper):240:243 -> <init>
-    1:3:void checkAppSeeLocal():434:436 -> a
-    4:5:void checkAppSeeLocal():439:440 -> a
-    6:12:void checkAppSeeLocal():444:450 -> a
-    13:14:boolean checkNetwork(boolean):454:455 -> a
-    15:15:boolean checkNetwork(boolean):457:457 -> a
-    16:18:int endTrack(com.zhuge.analysis.stat.ZGCore$EventDescription):498:500 -> a
-    19:21:int endTrack(com.zhuge.analysis.stat.ZGCore$EventDescription):503:505 -> a
-    22:25:int endTrack(com.zhuge.analysis.stat.ZGCore$EventDescription):508:511 -> a
-    26:28:int endTrack(com.zhuge.analysis.stat.ZGCore$EventDescription):513:515 -> a
-    29:29:int endTrack(com.zhuge.analysis.stat.ZGCore$EventDescription):518:518 -> a
-    30:34:int startNewSessionIfNeed(java.lang.String):524:528 -> a
-    35:36:int startNewSessionIfNeed(java.lang.String):531:532 -> a
-    37:42:int startNewSessionIfNeed(java.lang.String):535:540 -> a
-    43:45:int startNewSessionIfNeed(java.lang.String):546:548 -> a
-    46:47:int startNewSessionIfNeed(java.lang.String):541:542 -> a
-    48:49:int startNewSessionIfNeed(java.lang.String):552:553 -> a
-    50:51:int addEvent(org.json.JSONObject):596:597 -> a
-    52:56:int addEvent(org.json.JSONObject):603:607 -> a
-    1:9:void addScreenshot(org.json.JSONObject):469:477 -> b
-    10:10:void addScreenshot(org.json.JSONObject):479:479 -> b
-    11:11:void addScreenshot(org.json.JSONObject):481:481 -> b
-    12:12:void addScreenshot(org.json.JSONObject):485:485 -> b
-    13:13:void startSession(java.lang.String):564:564 -> b
-    14:16:void startSession(java.lang.String):566:568 -> b
-    17:20:void startSession(java.lang.String):571:574 -> b
-    21:21:void startSession(java.lang.String):577:577 -> b
-    22:22:void completeLastSession():581:581 -> b
-    23:23:void completeLastSession():584:584 -> b
-    1:1:void updateCUID(java.lang.String):494:494 -> c
-    2:3:void flushEvent():671:672 -> c
-    4:4:void flushEvent():675:675 -> c
-    5:5:void flushEvent():677:677 -> c
-    6:7:void flushEvent():681:682 -> c
-    8:14:void flushEvent():684:690 -> c
-    15:15:void flushEvent():692:692 -> c
-    1:5:void updateSessionActivity(java.lang.String):588:592 -> d
-    6:8:int flushEventWithDeepShare():613:615 -> d
-    9:10:int flushEventWithDeepShare():618:619 -> d
-    11:12:int flushEventWithDeepShare():622:623 -> d
-    13:13:int flushEventWithDeepShare():625:625 -> d
-    14:20:int flushEventWithDeepShare():630:636 -> d
-    21:23:int flushEventWithDeepShare():638:640 -> d
-    24:25:int flushEventWithDeepShare():642:643 -> d
-    26:26:int flushEventWithDeepShare():645:645 -> d
-    27:27:int flushEventWithDeepShare():647:647 -> d
-    28:30:int flushEventWithDeepShare():650:652 -> d
-    31:37:int flushEventWithDeepShare():654:660 -> d
-    38:38:int flushEventWithDeepShare():662:662 -> d
-    39:39:int flushEventWithDeepShare():664:664 -> d
-    40:40:int flushEventWithDeepShare():666:666 -> d
-    1:1:void updateDeviceInfoTime():490:490 -> e
-    1:3:void updateTodayCount():697:699 -> f
+    1:3:void checkAppSeeLocal():435:437 -> a
+    4:5:void checkAppSeeLocal():440:441 -> a
+    6:12:void checkAppSeeLocal():445:451 -> a
+    13:14:boolean checkNetwork(boolean):455:456 -> a
+    15:15:boolean checkNetwork(boolean):458:458 -> a
+    16:18:int endTrack(com.zhuge.analysis.stat.ZGCore$EventDescription):499:501 -> a
+    19:21:int endTrack(com.zhuge.analysis.stat.ZGCore$EventDescription):504:506 -> a
+    22:25:int endTrack(com.zhuge.analysis.stat.ZGCore$EventDescription):509:512 -> a
+    26:28:int endTrack(com.zhuge.analysis.stat.ZGCore$EventDescription):514:516 -> a
+    29:29:int endTrack(com.zhuge.analysis.stat.ZGCore$EventDescription):519:519 -> a
+    30:34:int startNewSessionIfNeed(java.lang.String):525:529 -> a
+    35:36:int startNewSessionIfNeed(java.lang.String):532:533 -> a
+    37:42:int startNewSessionIfNeed(java.lang.String):536:541 -> a
+    43:45:int startNewSessionIfNeed(java.lang.String):547:549 -> a
+    46:47:int startNewSessionIfNeed(java.lang.String):542:543 -> a
+    48:49:int startNewSessionIfNeed(java.lang.String):553:554 -> a
+    50:51:int addEvent(org.json.JSONObject):597:598 -> a
+    52:56:int addEvent(org.json.JSONObject):605:609 -> a
+    1:9:void addScreenshot(org.json.JSONObject):470:478 -> b
+    10:10:void addScreenshot(org.json.JSONObject):480:480 -> b
+    11:11:void addScreenshot(org.json.JSONObject):482:482 -> b
+    12:12:void addScreenshot(org.json.JSONObject):486:486 -> b
+    13:13:void startSession(java.lang.String):565:565 -> b
+    14:16:void startSession(java.lang.String):567:569 -> b
+    17:20:void startSession(java.lang.String):572:575 -> b
+    21:21:void startSession(java.lang.String):578:578 -> b
+    22:22:void completeLastSession():582:582 -> b
+    23:23:void completeLastSession():585:585 -> b
+    1:1:void updateCUID(java.lang.String):495:495 -> c
+    2:3:void flushEvent():673:674 -> c
+    4:4:void flushEvent():677:677 -> c
+    5:5:void flushEvent():679:679 -> c
+    6:7:void flushEvent():683:684 -> c
+    8:14:void flushEvent():686:692 -> c
+    15:15:void flushEvent():694:694 -> c
+    1:5:void updateSessionActivity(java.lang.String):589:593 -> d
+    6:8:int flushEventWithDeepShare():615:617 -> d
+    9:10:int flushEventWithDeepShare():620:621 -> d
+    11:12:int flushEventWithDeepShare():624:625 -> d
+    13:13:int flushEventWithDeepShare():627:627 -> d
+    14:20:int flushEventWithDeepShare():632:638 -> d
+    21:23:int flushEventWithDeepShare():640:642 -> d
+    24:25:int flushEventWithDeepShare():644:645 -> d
+    26:26:int flushEventWithDeepShare():647:647 -> d
+    27:27:int flushEventWithDeepShare():649:649 -> d
+    28:30:int flushEventWithDeepShare():652:654 -> d
+    31:37:int flushEventWithDeepShare():656:662 -> d
+    38:38:int flushEventWithDeepShare():664:664 -> d
+    39:39:int flushEventWithDeepShare():666:666 -> d
+    40:40:int flushEventWithDeepShare():668:668 -> d
+    1:1:void updateDeviceInfoTime():491:491 -> e
+    1:3:void updateTodayCount():699:701 -> f
     1:2:void handleMessage(android.os.Message):250:251 -> handleMessage
     3:4:void handleMessage(android.os.Message):254:255 -> handleMessage
     5:11:void handleMessage(android.os.Message):257:263 -> handleMessage
     12:12:void handleMessage(android.os.Message):265:265 -> handleMessage
-    13:13:void handleMessage(android.os.Message):271:271 -> handleMessage
-    14:19:void handleMessage(android.os.Message):300:305 -> handleMessage
-    20:20:void handleMessage(android.os.Message):409:409 -> handleMessage
-    21:31:void handleMessage(android.os.Message):414:424 -> handleMessage
-    32:33:void handleMessage(android.os.Message):402:403 -> handleMessage
-    34:34:void handleMessage(android.os.Message):405:405 -> handleMessage
-    35:37:void handleMessage(android.os.Message):382:384 -> handleMessage
-    38:43:void handleMessage(android.os.Message):386:391 -> handleMessage
-    44:44:void handleMessage(android.os.Message):394:394 -> handleMessage
-    45:47:void handleMessage(android.os.Message):370:372 -> handleMessage
-    48:49:void handleMessage(android.os.Message):377:378 -> handleMessage
-    50:52:void handleMessage(android.os.Message):365:367 -> handleMessage
-    53:55:void handleMessage(android.os.Message):360:362 -> handleMessage
-    56:58:void handleMessage(android.os.Message):355:357 -> handleMessage
-    59:61:void handleMessage(android.os.Message):348:350 -> handleMessage
-    62:62:void handleMessage(android.os.Message):352:352 -> handleMessage
-    63:64:void handleMessage(android.os.Message):344:345 -> handleMessage
-    65:67:void handleMessage(android.os.Message):339:341 -> handleMessage
-    68:71:void handleMessage(android.os.Message):330:333 -> handleMessage
-    72:72:void handleMessage(android.os.Message):335:335 -> handleMessage
-    73:77:void handleMessage(android.os.Message):318:322 -> handleMessage
-    78:78:void handleMessage(android.os.Message):324:324 -> handleMessage
-    79:85:void handleMessage(android.os.Message):308:314 -> handleMessage
-    86:90:void handleMessage(android.os.Message):288:292 -> handleMessage
-    91:93:void handleMessage(android.os.Message):294:296 -> handleMessage
-    94:95:void handleMessage(android.os.Message):284:285 -> handleMessage
-    96:96:void handleMessage(android.os.Message):275:275 -> handleMessage
-    97:98:void handleMessage(android.os.Message):279:280 -> handleMessage
-    99:100:void handleMessage(android.os.Message):428:429 -> handleMessage
+    13:13:void handleMessage(android.os.Message):272:272 -> handleMessage
+    14:19:void handleMessage(android.os.Message):301:306 -> handleMessage
+    20:20:void handleMessage(android.os.Message):410:410 -> handleMessage
+    21:31:void handleMessage(android.os.Message):415:425 -> handleMessage
+    32:33:void handleMessage(android.os.Message):403:404 -> handleMessage
+    34:34:void handleMessage(android.os.Message):406:406 -> handleMessage
+    35:37:void handleMessage(android.os.Message):383:385 -> handleMessage
+    38:43:void handleMessage(android.os.Message):387:392 -> handleMessage
+    44:44:void handleMessage(android.os.Message):395:395 -> handleMessage
+    45:47:void handleMessage(android.os.Message):371:373 -> handleMessage
+    48:49:void handleMessage(android.os.Message):378:379 -> handleMessage
+    50:52:void handleMessage(android.os.Message):366:368 -> handleMessage
+    53:55:void handleMessage(android.os.Message):361:363 -> handleMessage
+    56:58:void handleMessage(android.os.Message):356:358 -> handleMessage
+    59:61:void handleMessage(android.os.Message):349:351 -> handleMessage
+    62:62:void handleMessage(android.os.Message):353:353 -> handleMessage
+    63:64:void handleMessage(android.os.Message):345:346 -> handleMessage
+    65:67:void handleMessage(android.os.Message):340:342 -> handleMessage
+    68:71:void handleMessage(android.os.Message):331:334 -> handleMessage
+    72:72:void handleMessage(android.os.Message):336:336 -> handleMessage
+    73:77:void handleMessage(android.os.Message):319:323 -> handleMessage
+    78:78:void handleMessage(android.os.Message):325:325 -> handleMessage
+    79:85:void handleMessage(android.os.Message):309:315 -> handleMessage
+    86:90:void handleMessage(android.os.Message):289:293 -> handleMessage
+    91:93:void handleMessage(android.os.Message):295:297 -> handleMessage
+    94:95:void handleMessage(android.os.Message):285:286 -> handleMessage
+    96:96:void handleMessage(android.os.Message):276:276 -> handleMessage
+    97:98:void handleMessage(android.os.Message):280:281 -> handleMessage
+    99:100:void handleMessage(android.os.Message):429:430 -> handleMessage
 com.zhuge.analysis.stat.ZhugeCallbacks -> com.zhuge.analysis.stat.g:
     int currentSize -> n
     long startTime -> i
     float density -> j
-    boolean mosaicIsOk -> o
+    boolean firstActivity -> o
     long lastDown -> k
     org.json.JSONArray editableTextRects -> m
+    boolean mosaicIsOk -> p
     com.zhuge.analysis.stat.ZhugeCallbacks$newRecordTouchListener mListener -> f
     java.util.WeakHashMap viewCollection -> h
     boolean keyboardShow -> l
-    java.lang.String title -> q
-    java.lang.String url -> p
+    java.lang.String url -> q
+    java.lang.String ref_selector -> s
+    java.lang.String title -> r
     com.zhuge.analysis.stat.ZGCore mCore -> a
+    java.lang.String ref_url -> t
     android.os.Handler mainHandler -> g
     java.lang.reflect.Method getListenerInfo -> c
+    java.util.ArrayList urlList -> u
     android.view.View rootView -> b
     java.lang.String currentActivityUrl -> e
     java.lang.String currentActivityName -> d
-    1:1:void <init>(com.zhuge.analysis.stat.ZGCore):61:61 -> <init>
-    2:2:void <init>(com.zhuge.analysis.stat.ZGCore):51:51 -> <init>
-    3:3:void <init>(com.zhuge.analysis.stat.ZGCore):53:53 -> <init>
-    4:7:void <init>(com.zhuge.analysis.stat.ZGCore):56:59 -> <init>
-    8:9:void <init>(com.zhuge.analysis.stat.ZGCore):62:63 -> <init>
-    10:14:void <init>(com.zhuge.analysis.stat.ZGCore):65:69 -> <init>
-    15:15:void <init>(com.zhuge.analysis.stat.ZGCore):71:71 -> <init>
-    1:1:com.zhuge.analysis.stat.ZGCore access$100(com.zhuge.analysis.stat.ZhugeCallbacks):37:37 -> a
-    2:2:long access$1002(com.zhuge.analysis.stat.ZhugeCallbacks,long):37:37 -> a
-    3:3:void addOnTouchListenerForView(android.view.View):207:207 -> a
-    4:10:void addOnTouchListenerForView(android.view.View):210:216 -> a
-    11:11:void addOnTouchListenerForView(android.view.View):218:218 -> a
-    12:13:void traverseRootView(android.view.ViewGroup):225:226 -> a
-    14:15:void traverseRootView(android.view.ViewGroup):230:231 -> a
-    16:17:void traverseRootView(android.view.ViewGroup):233:234 -> a
-    18:18:org.json.JSONArray cloneEditableLocation():312:312 -> a
-    19:30:org.json.JSONArray cloneEditableLocation():314:325 -> a
-    31:31:org.json.JSONArray cloneEditableLocation():328:328 -> a
+    1:1:void <init>(com.zhuge.analysis.stat.ZGCore):67:67 -> <init>
+    2:2:void <init>(com.zhuge.analysis.stat.ZGCore):53:53 -> <init>
+    3:3:void <init>(com.zhuge.analysis.stat.ZGCore):55:55 -> <init>
+    4:10:void <init>(com.zhuge.analysis.stat.ZGCore):58:64 -> <init>
+    11:12:void <init>(com.zhuge.analysis.stat.ZGCore):68:69 -> <init>
+    13:19:void <init>(com.zhuge.analysis.stat.ZGCore):71:77 -> <init>
+    20:20:void <init>(com.zhuge.analysis.stat.ZGCore):79:79 -> <init>
+    1:1:com.zhuge.analysis.stat.ZGCore access$100(com.zhuge.analysis.stat.ZhugeCallbacks):39:39 -> a
+    2:2:long access$1002(com.zhuge.analysis.stat.ZhugeCallbacks,long):39:39 -> a
+    3:3:void addOnTouchListenerForView(android.view.View):221:221 -> a
+    4:10:void addOnTouchListenerForView(android.view.View):224:230 -> a
+    11:11:void addOnTouchListenerForView(android.view.View):232:232 -> a
+    12:13:void traverseRootView(android.view.ViewGroup):239:240 -> a
+    14:15:void traverseRootView(android.view.ViewGroup):244:245 -> a
+    16:17:void traverseRootView(android.view.ViewGroup):247:248 -> a
+    18:18:org.json.JSONArray cloneEditableLocation():326:326 -> a
+    19:30:org.json.JSONArray cloneEditableLocation():328:339 -> a
+    31:31:org.json.JSONArray cloneEditableLocation():342:342 -> a
     void detectKeyboardShow() -> b
-    1:1:long access$1000(com.zhuge.analysis.stat.ZhugeCallbacks):37:37 -> b
-    2:10:void getEditableView(android.view.View):274:282 -> b
-    11:12:void getEditableView(android.view.View):285:286 -> b
-    13:16:void getEditableView(android.view.View):291:294 -> b
-    17:18:void getEditableView(android.view.View):296:297 -> b
-    19:24:void getEditableView(android.view.View):299:304 -> b
-    25:25:void getEditableView(android.view.View):306:306 -> b
-    1:1:java.lang.String access$1100(com.zhuge.analysis.stat.ZhugeCallbacks):37:37 -> c
-    1:1:java.lang.String access$1200(com.zhuge.analysis.stat.ZhugeCallbacks):37:37 -> d
-    1:1:org.json.JSONArray access$1300(com.zhuge.analysis.stat.ZhugeCallbacks):37:37 -> e
-    1:1:java.lang.String access$1400(com.zhuge.analysis.stat.ZhugeCallbacks):37:37 -> f
-    1:1:java.lang.String access$1500(com.zhuge.analysis.stat.ZhugeCallbacks):37:37 -> g
-    1:1:android.os.Handler access$200(com.zhuge.analysis.stat.ZhugeCallbacks):37:37 -> h
-    1:1:boolean handleMessage(android.os.Message):242:242 -> handleMessage
-    2:2:boolean handleMessage(android.os.Message):246:246 -> handleMessage
-    3:3:boolean handleMessage(android.os.Message):249:249 -> handleMessage
-    4:4:boolean handleMessage(android.os.Message):252:252 -> handleMessage
-    5:6:boolean handleMessage(android.os.Message):255:256 -> handleMessage
-    7:18:boolean handleMessage(android.os.Message):258:269 -> handleMessage
-    1:1:boolean access$300(com.zhuge.analysis.stat.ZhugeCallbacks):37:37 -> i
-    1:1:float access$400(com.zhuge.analysis.stat.ZhugeCallbacks):37:37 -> j
-    1:1:boolean access$500(com.zhuge.analysis.stat.ZhugeCallbacks):37:37 -> k
-    1:1:android.view.View access$600(com.zhuge.analysis.stat.ZhugeCallbacks):37:37 -> l
-    1:1:org.json.JSONArray access$700(com.zhuge.analysis.stat.ZhugeCallbacks):37:37 -> m
-    1:1:int access$800(com.zhuge.analysis.stat.ZhugeCallbacks):37:37 -> n
-    1:1:long access$900(com.zhuge.analysis.stat.ZhugeCallbacks):37:37 -> o
-    1:5:void onActivityPaused(android.app.Activity):126:130 -> onActivityPaused
-    6:9:void onActivityPaused(android.app.Activity):132:135 -> onActivityPaused
-    1:8:void onActivityResumed(android.app.Activity):86:93 -> onActivityResumed
-    9:10:void onActivityResumed(android.app.Activity):95:96 -> onActivityResumed
-    11:14:void onActivityResumed(android.app.Activity):99:102 -> onActivityResumed
-    15:16:void onActivityResumed(android.app.Activity):105:106 -> onActivityResumed
-    17:21:void onActivityResumed(android.app.Activity):108:112 -> onActivityResumed
-    1:1:void onActivityStopped(android.app.Activity):141:141 -> onActivityStopped
-    1:1:void onGlobalLayout():156:156 -> onGlobalLayout
-    2:4:void onGlobalLayout():160:162 -> onGlobalLayout
-    5:5:void onGlobalLayout():157:157 -> onGlobalLayout
+    1:1:long access$1000(com.zhuge.analysis.stat.ZhugeCallbacks):39:39 -> b
+    2:10:void getEditableView(android.view.View):288:296 -> b
+    11:12:void getEditableView(android.view.View):299:300 -> b
+    13:16:void getEditableView(android.view.View):305:308 -> b
+    17:18:void getEditableView(android.view.View):310:311 -> b
+    19:24:void getEditableView(android.view.View):313:318 -> b
+    25:25:void getEditableView(android.view.View):320:320 -> b
+    1:1:java.lang.String access$1100(com.zhuge.analysis.stat.ZhugeCallbacks):39:39 -> c
+    1:1:java.lang.String access$1200(com.zhuge.analysis.stat.ZhugeCallbacks):39:39 -> d
+    1:1:org.json.JSONArray access$1300(com.zhuge.analysis.stat.ZhugeCallbacks):39:39 -> e
+    1:1:java.lang.String access$1400(com.zhuge.analysis.stat.ZhugeCallbacks):39:39 -> f
+    1:1:java.lang.String access$1500(com.zhuge.analysis.stat.ZhugeCallbacks):39:39 -> g
+    1:1:android.os.Handler access$200(com.zhuge.analysis.stat.ZhugeCallbacks):39:39 -> h
+    1:1:boolean handleMessage(android.os.Message):256:256 -> handleMessage
+    2:2:boolean handleMessage(android.os.Message):260:260 -> handleMessage
+    3:3:boolean handleMessage(android.os.Message):263:263 -> handleMessage
+    4:4:boolean handleMessage(android.os.Message):266:266 -> handleMessage
+    5:6:boolean handleMessage(android.os.Message):269:270 -> handleMessage
+    7:18:boolean handleMessage(android.os.Message):272:283 -> handleMessage
+    1:1:boolean access$300(com.zhuge.analysis.stat.ZhugeCallbacks):39:39 -> i
+    1:1:float access$400(com.zhuge.analysis.stat.ZhugeCallbacks):39:39 -> j
+    1:1:boolean access$500(com.zhuge.analysis.stat.ZhugeCallbacks):39:39 -> k
+    1:1:android.view.View access$600(com.zhuge.analysis.stat.ZhugeCallbacks):39:39 -> l
+    1:1:org.json.JSONArray access$700(com.zhuge.analysis.stat.ZhugeCallbacks):39:39 -> m
+    1:1:int access$800(com.zhuge.analysis.stat.ZhugeCallbacks):39:39 -> n
+    1:1:long access$900(com.zhuge.analysis.stat.ZhugeCallbacks):39:39 -> o
+    1:5:void onActivityPaused(android.app.Activity):140:144 -> onActivityPaused
+    6:9:void onActivityPaused(android.app.Activity):146:149 -> onActivityPaused
+    1:8:void onActivityResumed(android.app.Activity):96:103 -> onActivityResumed
+    9:14:void onActivityResumed(android.app.Activity):106:111 -> onActivityResumed
+    15:16:void onActivityResumed(android.app.Activity):113:114 -> onActivityResumed
+    17:20:void onActivityResumed(android.app.Activity):117:120 -> onActivityResumed
+    21:23:void onActivityResumed(android.app.Activity):126:128 -> onActivityResumed
+    24:26:void onActivityResumed(android.app.Activity):130:132 -> onActivityResumed
+    1:1:void onActivityStopped(android.app.Activity):155:155 -> onActivityStopped
+    1:1:void onGlobalLayout():170:170 -> onGlobalLayout
+    2:4:void onGlobalLayout():174:176 -> onGlobalLayout
+    5:5:void onGlobalLayout():171:171 -> onGlobalLayout
 com.zhuge.analysis.stat.ZhugeCallbacks$newRecordTouchListener -> com.zhuge.analysis.stat.g$a:
     java.lang.String eid -> i
     float lastY -> h
@@ -1129,36 +1137,36 @@ com.zhuge.analysis.stat.ZhugeCallbacks$newRecordTouchListener -> com.zhuge.analy
     long actionStart -> c
     java.util.WeakHashMap viewAndListenerMap -> a
     java.lang.String screenshot -> d
-    1:1:void <init>(com.zhuge.analysis.stat.ZhugeCallbacks):355:355 -> <init>
-    2:2:void <init>(com.zhuge.analysis.stat.ZhugeCallbacks):348:348 -> <init>
-    3:4:void <init>(com.zhuge.analysis.stat.ZhugeCallbacks):356:357 -> <init>
-    1:1:com.zhuge.analysis.stat.CachedBitmap access$000(com.zhuge.analysis.stat.ZhugeCallbacks$newRecordTouchListener):333:333 -> a
-    2:3:void setViewAndListenerMap(android.view.View,android.view.View$OnTouchListener):362:363 -> a
-    4:4:void onViewClick(android.view.View):491:491 -> a
-    5:6:void onViewClick(android.view.View):494:495 -> a
-    7:8:void onViewClick(android.view.View):497:498 -> a
-    9:17:void onViewClick(android.view.View):501:509 -> a
-    18:18:void onViewClick(android.view.View):511:511 -> a
-    1:1:boolean onTouch(android.view.View,android.view.MotionEvent):370:370 -> onTouch
-    2:2:boolean onTouch(android.view.View,android.view.MotionEvent):372:372 -> onTouch
-    3:4:boolean onTouch(android.view.View,android.view.MotionEvent):405:406 -> onTouch
-    5:7:boolean onTouch(android.view.View,android.view.MotionEvent):408:410 -> onTouch
-    8:11:boolean onTouch(android.view.View,android.view.MotionEvent):415:418 -> onTouch
-    12:20:boolean onTouch(android.view.View,android.view.MotionEvent):421:429 -> onTouch
-    21:22:boolean onTouch(android.view.View,android.view.MotionEvent):433:434 -> onTouch
-    23:24:boolean onTouch(android.view.View,android.view.MotionEvent):437:438 -> onTouch
-    25:27:boolean onTouch(android.view.View,android.view.MotionEvent):440:442 -> onTouch
-    28:30:boolean onTouch(android.view.View,android.view.MotionEvent):445:447 -> onTouch
-    31:39:boolean onTouch(android.view.View,android.view.MotionEvent):449:457 -> onTouch
-    40:53:boolean onTouch(android.view.View,android.view.MotionEvent):459:472 -> onTouch
-    54:59:boolean onTouch(android.view.View,android.view.MotionEvent):475:480 -> onTouch
-    60:61:boolean onTouch(android.view.View,android.view.MotionEvent):375:376 -> onTouch
-    62:62:boolean onTouch(android.view.View,android.view.MotionEvent):378:378 -> onTouch
-    63:63:boolean onTouch(android.view.View,android.view.MotionEvent):380:380 -> onTouch
-    64:77:boolean onTouch(android.view.View,android.view.MotionEvent):383:396 -> onTouch
-    78:78:boolean onTouch(android.view.View,android.view.MotionEvent):398:398 -> onTouch
-    79:81:boolean onTouch(android.view.View,android.view.MotionEvent):400:402 -> onTouch
-    82:82:boolean onTouch(android.view.View,android.view.MotionEvent):488:488 -> onTouch
+    1:1:void <init>(com.zhuge.analysis.stat.ZhugeCallbacks):369:369 -> <init>
+    2:2:void <init>(com.zhuge.analysis.stat.ZhugeCallbacks):362:362 -> <init>
+    3:4:void <init>(com.zhuge.analysis.stat.ZhugeCallbacks):370:371 -> <init>
+    1:1:com.zhuge.analysis.stat.CachedBitmap access$000(com.zhuge.analysis.stat.ZhugeCallbacks$newRecordTouchListener):347:347 -> a
+    2:3:void setViewAndListenerMap(android.view.View,android.view.View$OnTouchListener):376:377 -> a
+    4:4:void onViewClick(android.view.View):505:505 -> a
+    5:6:void onViewClick(android.view.View):508:509 -> a
+    7:8:void onViewClick(android.view.View):511:512 -> a
+    9:18:void onViewClick(android.view.View):515:524 -> a
+    19:19:void onViewClick(android.view.View):526:526 -> a
+    1:1:boolean onTouch(android.view.View,android.view.MotionEvent):384:384 -> onTouch
+    2:2:boolean onTouch(android.view.View,android.view.MotionEvent):386:386 -> onTouch
+    3:4:boolean onTouch(android.view.View,android.view.MotionEvent):419:420 -> onTouch
+    5:7:boolean onTouch(android.view.View,android.view.MotionEvent):422:424 -> onTouch
+    8:11:boolean onTouch(android.view.View,android.view.MotionEvent):429:432 -> onTouch
+    12:20:boolean onTouch(android.view.View,android.view.MotionEvent):435:443 -> onTouch
+    21:22:boolean onTouch(android.view.View,android.view.MotionEvent):447:448 -> onTouch
+    23:24:boolean onTouch(android.view.View,android.view.MotionEvent):451:452 -> onTouch
+    25:27:boolean onTouch(android.view.View,android.view.MotionEvent):454:456 -> onTouch
+    28:30:boolean onTouch(android.view.View,android.view.MotionEvent):459:461 -> onTouch
+    31:39:boolean onTouch(android.view.View,android.view.MotionEvent):463:471 -> onTouch
+    40:53:boolean onTouch(android.view.View,android.view.MotionEvent):473:486 -> onTouch
+    54:59:boolean onTouch(android.view.View,android.view.MotionEvent):489:494 -> onTouch
+    60:61:boolean onTouch(android.view.View,android.view.MotionEvent):389:390 -> onTouch
+    62:62:boolean onTouch(android.view.View,android.view.MotionEvent):392:392 -> onTouch
+    63:63:boolean onTouch(android.view.View,android.view.MotionEvent):394:394 -> onTouch
+    64:77:boolean onTouch(android.view.View,android.view.MotionEvent):397:410 -> onTouch
+    78:78:boolean onTouch(android.view.View,android.view.MotionEvent):412:412 -> onTouch
+    79:81:boolean onTouch(android.view.View,android.view.MotionEvent):414:416 -> onTouch
+    82:82:boolean onTouch(android.view.View,android.view.MotionEvent):502:502 -> onTouch
 com.zhuge.analysis.stat.ZhugeDbAdapter -> com.zhuge.analysis.stat.h:
     com.zhuge.analysis.stat.ZhugeDbAdapter$ZhugeDbHelper mDbHelper -> a
     1:2:void <init>(android.content.Context):58:59 -> <init>
@@ -1182,65 +1190,65 @@ com.zhuge.analysis.stat.ZhugeDbAdapter -> com.zhuge.analysis.stat.h:
     38:38:int addEventToSee(boolean,org.json.JSONObject,long):133:133 -> a
     39:39:int addEventToSee(boolean,org.json.JSONObject,long):131:131 -> a
     40:41:int addEventToSee(boolean,org.json.JSONObject,long):133:134 -> a
-    42:46:int addEvent(org.json.JSONObject):205:209 -> a
-    47:49:int addEvent(org.json.JSONObject):211:213 -> a
-    50:50:int addEvent(org.json.JSONObject):219:219 -> a
-    51:51:int addEvent(org.json.JSONObject):221:221 -> a
-    52:53:int addEvent(org.json.JSONObject):215:216 -> a
-    54:54:int addEvent(org.json.JSONObject):219:219 -> a
-    55:55:int addEvent(org.json.JSONObject):221:221 -> a
-    56:56:int addEvent(org.json.JSONObject):219:219 -> a
-    57:58:int addEvent(org.json.JSONObject):221:222 -> a
-    59:60:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):238:239 -> a
-    61:64:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):241:244 -> a
-    65:68:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):246:249 -> a
-    69:72:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):251:254 -> a
-    73:73:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):258:258 -> a
-    74:75:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):261:262 -> a
-    76:76:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):270:270 -> a
-    77:77:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):272:272 -> a
-    78:78:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):265:265 -> a
-    79:79:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):270:270 -> a
-    80:80:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):276:276 -> a
-    81:81:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):270:270 -> a
-    82:82:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):272:272 -> a
-    83:83:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):274:274 -> a
-    84:84:android.util.Pair getData():289:289 -> a
-    85:86:android.util.Pair getData():291:292 -> a
-    87:87:android.util.Pair getData():294:294 -> a
-    88:88:android.util.Pair getData():311:311 -> a
+    42:45:int addEvent(org.json.JSONObject):205:208 -> a
+    46:49:int addEvent(org.json.JSONObject):210:213 -> a
+    50:50:int addEvent(org.json.JSONObject):220:220 -> a
+    51:51:int addEvent(org.json.JSONObject):222:222 -> a
+    52:53:int addEvent(org.json.JSONObject):216:217 -> a
+    54:54:int addEvent(org.json.JSONObject):220:220 -> a
+    55:55:int addEvent(org.json.JSONObject):222:222 -> a
+    56:56:int addEvent(org.json.JSONObject):220:220 -> a
+    57:58:int addEvent(org.json.JSONObject):222:223 -> a
+    59:60:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):239:240 -> a
+    61:64:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):242:245 -> a
+    65:68:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):247:250 -> a
+    69:72:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):252:255 -> a
+    73:73:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):259:259 -> a
+    74:75:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):262:263 -> a
+    76:76:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):271:271 -> a
+    77:77:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):273:273 -> a
+    78:78:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):266:266 -> a
+    79:79:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):271:271 -> a
+    80:80:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):277:277 -> a
+    81:81:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):271:271 -> a
+    82:82:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):273:273 -> a
+    83:83:java.lang.String[] getDataAttachDeepShare(long,org.json.JSONObject):275:275 -> a
+    84:84:android.util.Pair getData():290:290 -> a
+    85:86:android.util.Pair getData():292:293 -> a
+    87:88:android.util.Pair getData():295:296 -> a
     89:89:android.util.Pair getData():313:313 -> a
-    90:92:android.util.Pair getData():297:299 -> a
-    93:95:android.util.Pair getData():301:303 -> a
-    96:97:android.util.Pair getData():305:306 -> a
-    98:98:android.util.Pair getData():311:311 -> a
+    90:90:android.util.Pair getData():315:315 -> a
+    91:93:android.util.Pair getData():299:301 -> a
+    94:96:android.util.Pair getData():303:305 -> a
+    97:98:android.util.Pair getData():307:308 -> a
     99:99:android.util.Pair getData():313:313 -> a
-    100:100:android.util.Pair getData():308:308 -> a
-    101:101:android.util.Pair getData():311:311 -> a
+    100:100:android.util.Pair getData():315:315 -> a
+    101:101:android.util.Pair getData():310:310 -> a
     102:102:android.util.Pair getData():313:313 -> a
-    103:103:android.util.Pair getData():311:311 -> a
+    103:103:android.util.Pair getData():315:315 -> a
     104:104:android.util.Pair getData():313:313 -> a
     105:105:android.util.Pair getData():315:315 -> a
-    106:108:void removeEvent(java.lang.String):344:346 -> a
-    109:109:void removeEvent(java.lang.String):348:348 -> a
+    106:106:android.util.Pair getData():317:317 -> a
+    107:109:void removeEvent(java.lang.String):346:348 -> a
     110:110:void removeEvent(java.lang.String):350:350 -> a
-    111:112:void removeEvent(java.lang.String):352:353 -> a
+    111:111:void removeEvent(java.lang.String):352:352 -> a
+    112:113:void removeEvent(java.lang.String):354:355 -> a
     1:3:void deleteDataFromSeeWithSession(long):140:142 -> b
     4:4:void deleteDataFromSeeWithSession(long):144:144 -> b
     5:6:void deleteDataFromSeeWithSession(long):146:147 -> b
-    7:9:void removeEventFromSee(java.lang.String):325:327 -> b
-    10:10:void removeEventFromSee(java.lang.String):329:329 -> b
-    11:11:void removeEventFromSee(java.lang.String):331:331 -> b
-    12:13:void removeEventFromSee(java.lang.String):333:334 -> b
-    14:14:long getEventCount():360:360 -> b
-    15:16:long getEventCount():362:363 -> b
-    17:17:long getEventCount():368:368 -> b
-    18:18:long getEventCount():370:370 -> b
-    19:19:long getEventCount():365:365 -> b
-    20:20:long getEventCount():368:368 -> b
-    21:21:long getEventCount():370:370 -> b
-    22:22:long getEventCount():368:368 -> b
-    23:24:long getEventCount():370:371 -> b
+    7:9:void removeEventFromSee(java.lang.String):327:329 -> b
+    10:10:void removeEventFromSee(java.lang.String):331:331 -> b
+    11:11:void removeEventFromSee(java.lang.String):333:333 -> b
+    12:13:void removeEventFromSee(java.lang.String):335:336 -> b
+    14:14:long getEventCount():362:362 -> b
+    15:16:long getEventCount():364:365 -> b
+    17:17:long getEventCount():370:370 -> b
+    18:18:long getEventCount():372:372 -> b
+    19:19:long getEventCount():367:367 -> b
+    20:20:long getEventCount():370:370 -> b
+    21:21:long getEventCount():372:372 -> b
+    22:22:long getEventCount():370:370 -> b
+    23:24:long getEventCount():372:373 -> b
     1:3:long getFirstSession():154:156 -> c
     4:5:long getFirstSession():158:159 -> c
     6:6:long getFirstSession():165:165 -> c
@@ -1260,11 +1268,11 @@ com.zhuge.analysis.stat.ZhugeDbAdapter -> com.zhuge.analysis.stat.h:
     10:11:int getSessionCountFromSee():190:191 -> d
 com.zhuge.analysis.stat.ZhugeDbAdapter$ZhugeDbHelper -> com.zhuge.analysis.stat.h$a:
     java.lang.String mFile -> a
-    1:2:void <init>(android.content.Context,java.lang.String):380:381 -> <init>
-    1:3:void deleteDatabase():417:419 -> a
-    1:5:void onCreate(android.database.sqlite.SQLiteDatabase):386:390 -> onCreate
-    1:7:void onDowngrade(android.database.sqlite.SQLiteDatabase,int,int):407:413 -> onDowngrade
-    1:7:void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int):395:401 -> onUpgrade
+    1:2:void <init>(android.content.Context,java.lang.String):382:383 -> <init>
+    1:3:void deleteDatabase():419:421 -> a
+    1:5:void onCreate(android.database.sqlite.SQLiteDatabase):388:392 -> onCreate
+    1:7:void onDowngrade(android.database.sqlite.SQLiteDatabase,int,int):409:415 -> onDowngrade
+    1:7:void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int):397:403 -> onUpgrade
 com.zhuge.analysis.stat.ZhugeParam -> com.zhuge.analysis.stat.ZhugeParam:
     1:1:void <init>(com.zhuge.analysis.stat.ZhugeParam$Builder,com.zhuge.analysis.stat.ZhugeParam$1):8:8 -> <init>
     2:6:void <init>(com.zhuge.analysis.stat.ZhugeParam$Builder):14:18 -> <init>
@@ -1284,108 +1292,110 @@ com.zhuge.analysis.stat.ZhugeParam$Builder -> com.zhuge.analysis.stat.ZhugeParam
     1:1:com.zhuge.analysis.stat.ZhugeParam$Builder inAppDataListener(com.zhuge.analysis.listeners.ZhugeInAppDataListener):51:51 -> inAppDataListener
 com.zhuge.analysis.stat.ZhugeSDK -> com.zhuge.analysis.stat.ZhugeSDK:
     1:1:void <init>(com.zhuge.analysis.stat.ZhugeSDK$1):30:30 -> <init>
-    2:2:void <init>():67:67 -> <init>
-    3:8:void <init>():33:38 -> <init>
-    9:10:void <init>():68:69 -> <init>
+    2:2:void <init>():69:69 -> <init>
+    3:10:void <init>():33:40 -> <init>
+    11:12:void <init>():70:71 -> <init>
     1:1:com.zhuge.analysis.stat.ZGCore access$200(com.zhuge.analysis.stat.ZhugeSDK):30:30 -> access$200
-    1:2:void endTrack(java.lang.String,org.json.JSONObject):244:245 -> endTrack
-    1:1:void flush(android.content.Context):318:318 -> flush
-    1:1:java.lang.String getDid():376:376 -> getDid
-    1:1:com.zhuge.analysis.stat.ZhugeSDK getInstance():64:64 -> getInstance
-    1:1:long getSid():380:380 -> getSid
-    1:1:void identify(android.content.Context,java.lang.String,org.json.JSONObject):305:305 -> identify
-    2:3:void identify(android.content.Context,java.lang.String,org.json.JSONObject):309:310 -> identify
-    4:4:void identify(android.content.Context,java.lang.String,org.json.JSONObject):306:306 -> identify
-    5:5:void identify(android.content.Context,java.lang.String,java.util.HashMap):314:314 -> identify
-    1:2:void init(android.app.Activity,com.zhuge.analysis.listeners.ZhugeInAppDataListener):178:179 -> init
-    3:3:void init(android.app.Activity,com.zhuge.analysis.listeners.ZhugeInAppDataListener):181:181 -> init
-    4:5:void init(android.app.Activity,java.lang.String,java.lang.String,com.zhuge.analysis.listeners.ZhugeInAppDataListener):187:188 -> init
-    6:6:void init(android.content.Context):193:193 -> init
-    7:8:void init(android.content.Context):196:197 -> init
-    9:9:void init(android.content.Context):199:199 -> init
-    10:11:void init(android.content.Context,java.lang.String,java.lang.String):204:205 -> init
-    12:12:void init(android.content.Context,java.lang.String,java.lang.String):207:207 -> init
-    13:13:void init(android.content.Context,java.lang.String,java.lang.String):210:210 -> init
-    14:19:void init(android.content.Context,java.lang.String,java.lang.String):214:219 -> init
-    20:23:void init(android.content.Context,java.lang.String,java.lang.String):221:224 -> init
-    24:24:void init(android.content.Context,java.lang.String,java.lang.String):211:211 -> init
-    1:1:void initDeepShare():92:92 -> initDeepShare
-    1:3:void initWithDeepShareAndParam(android.app.Activity,com.zhuge.analysis.stat.ZhugeParam):162:164 -> initWithDeepShareAndParam
-    4:5:void initWithDeepShareAndParam(android.app.Activity,com.zhuge.analysis.stat.ZhugeParam):167:168 -> initWithDeepShareAndParam
-    6:7:void initWithDeepShareAndParam(android.app.Activity,com.zhuge.analysis.stat.ZhugeParam):170:171 -> initWithDeepShareAndParam
-    8:8:void initWithDeepShareAndParam(android.app.Activity,com.zhuge.analysis.stat.ZhugeParam):173:173 -> initWithDeepShareAndParam
-    1:3:void initWithParam(android.content.Context,com.zhuge.analysis.stat.ZhugeParam):146:148 -> initWithParam
-    4:5:void initWithParam(android.content.Context,com.zhuge.analysis.stat.ZhugeParam):151:152 -> initWithParam
-    6:7:void initWithParam(android.content.Context,com.zhuge.analysis.stat.ZhugeParam):154:155 -> initWithParam
-    8:8:void initWithParam(android.content.Context,com.zhuge.analysis.stat.ZhugeParam):157:157 -> initWithParam
-    1:1:boolean isEnableAutoTrack():87:87 -> isEnableAutoTrack
-    1:1:boolean isInitDeepShare():96:96 -> isInitDeepShare
-    1:2:void onMsgReaded(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):335:336 -> onMsgReaded
-    3:3:void onMsgReaded(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):339:339 -> onMsgReaded
-    4:4:void onMsgReaded(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):341:341 -> onMsgReaded
-    1:2:void onMsgRecved(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):346:347 -> onMsgRecved
-    3:3:void onMsgRecved(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):350:350 -> onMsgRecved
-    4:4:void onMsgRecved(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):352:352 -> onMsgRecved
-    1:1:void openAutoTrack():84:84 -> openAutoTrack
-    1:1:void openDebug():77:77 -> openDebug
-    1:1:void openExceptionTrack():81:81 -> openExceptionTrack
-    1:1:void openLog():73:73 -> openLog
-    1:1:void setLogLevel(int):104:104 -> setLogLevel
-    1:1:void setPlatform(org.json.JSONObject):358:358 -> setPlatform
-    2:3:void setPlatform(org.json.JSONObject):362:363 -> setPlatform
-    4:4:void setPlatform(org.json.JSONObject):359:359 -> setPlatform
-    1:1:void setSuperProperty(org.json.JSONObject):367:367 -> setSuperProperty
-    2:3:void setSuperProperty(org.json.JSONObject):371:372 -> setSuperProperty
-    4:4:void setSuperProperty(org.json.JSONObject):368:368 -> setSuperProperty
-    1:1:void setThirdPartyPushUserId(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.String):323:323 -> setThirdPartyPushUserId
-    2:3:void setThirdPartyPushUserId(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.String):326:327 -> setThirdPartyPushUserId
-    4:5:void setThirdPartyPushUserId(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.String):330:331 -> setThirdPartyPushUserId
-    1:2:void setUploadURL(java.lang.String,java.lang.String):127:128 -> setUploadURL
-    3:8:void setUploadURL(java.lang.String,java.lang.String):133:138 -> setUploadURL
-    9:9:void setUploadURL(java.lang.String,java.lang.String):129:129 -> setUploadURL
-    1:1:void setUtm(org.json.JSONObject):118:118 -> setUtm
-    1:1:void setZGSeeEnable(boolean):142:142 -> setZGSeeEnable
-    1:1:void startTrack(java.lang.String):235:235 -> startTrack
-    1:1:void track(android.content.Context,java.lang.String):279:279 -> track
-    2:2:void track(android.content.Context,java.lang.String):283:283 -> track
-    3:3:void track(android.content.Context,java.lang.String):280:280 -> track
-    4:4:void track(android.content.Context,java.lang.String,org.json.JSONObject):287:287 -> track
-    5:6:void track(android.content.Context,java.lang.String,org.json.JSONObject):291:292 -> track
-    7:7:void track(android.content.Context,java.lang.String,org.json.JSONObject):288:288 -> track
-    8:8:void track(android.content.Context,java.lang.String,java.util.HashMap):297:297 -> track
-    9:10:void track(android.content.Context,java.lang.String,java.util.HashMap):300:301 -> track
-    1:1:void trackRevenue(android.content.Context,java.util.HashMap):251:251 -> trackRevenue
-    2:3:void trackRevenue(android.content.Context,java.util.HashMap):254:255 -> trackRevenue
-    4:6:void trackRevenue(android.content.Context,org.json.JSONObject):262:264 -> trackRevenue
-    7:9:void trackRevenue(android.content.Context,org.json.JSONObject):266:268 -> trackRevenue
-    10:10:void trackRevenue(android.content.Context,org.json.JSONObject):271:271 -> trackRevenue
-    11:12:void trackRevenue(android.content.Context,org.json.JSONObject):274:275 -> trackRevenue
-    1:2:void zgOnFailed(java.lang.String):48:49 -> zgOnFailed
-    1:3:void zgOnInAppDataReturned(org.json.JSONObject):55:57 -> zgOnInAppDataReturned
-    4:4:void zgOnInAppDataReturned(org.json.JSONObject):59:59 -> zgOnInAppDataReturned
+    1:2:void endTrack(java.lang.String,org.json.JSONObject):256:257 -> endTrack
+    1:1:void flush(android.content.Context):330:330 -> flush
+    1:1:java.lang.String getDid():388:388 -> getDid
+    1:1:com.zhuge.analysis.stat.ZhugeSDK getInstance():66:66 -> getInstance
+    1:1:long getSid():392:392 -> getSid
+    1:1:void identify(android.content.Context,java.lang.String,org.json.JSONObject):317:317 -> identify
+    2:3:void identify(android.content.Context,java.lang.String,org.json.JSONObject):321:322 -> identify
+    4:4:void identify(android.content.Context,java.lang.String,org.json.JSONObject):318:318 -> identify
+    5:5:void identify(android.content.Context,java.lang.String,java.util.HashMap):326:326 -> identify
+    1:2:void init(android.app.Activity,com.zhuge.analysis.listeners.ZhugeInAppDataListener):190:191 -> init
+    3:3:void init(android.app.Activity,com.zhuge.analysis.listeners.ZhugeInAppDataListener):193:193 -> init
+    4:5:void init(android.app.Activity,java.lang.String,java.lang.String,com.zhuge.analysis.listeners.ZhugeInAppDataListener):199:200 -> init
+    6:6:void init(android.content.Context):205:205 -> init
+    7:8:void init(android.content.Context):208:209 -> init
+    9:9:void init(android.content.Context):211:211 -> init
+    10:11:void init(android.content.Context,java.lang.String,java.lang.String):216:217 -> init
+    12:12:void init(android.content.Context,java.lang.String,java.lang.String):219:219 -> init
+    13:13:void init(android.content.Context,java.lang.String,java.lang.String):222:222 -> init
+    14:19:void init(android.content.Context,java.lang.String,java.lang.String):226:231 -> init
+    20:23:void init(android.content.Context,java.lang.String,java.lang.String):233:236 -> init
+    24:24:void init(android.content.Context,java.lang.String,java.lang.String):223:223 -> init
+    1:1:void initDeepShare():104:104 -> initDeepShare
+    1:3:void initWithDeepShareAndParam(android.app.Activity,com.zhuge.analysis.stat.ZhugeParam):174:176 -> initWithDeepShareAndParam
+    4:5:void initWithDeepShareAndParam(android.app.Activity,com.zhuge.analysis.stat.ZhugeParam):179:180 -> initWithDeepShareAndParam
+    6:7:void initWithDeepShareAndParam(android.app.Activity,com.zhuge.analysis.stat.ZhugeParam):182:183 -> initWithDeepShareAndParam
+    8:8:void initWithDeepShareAndParam(android.app.Activity,com.zhuge.analysis.stat.ZhugeParam):185:185 -> initWithDeepShareAndParam
+    1:3:void initWithParam(android.content.Context,com.zhuge.analysis.stat.ZhugeParam):158:160 -> initWithParam
+    4:5:void initWithParam(android.content.Context,com.zhuge.analysis.stat.ZhugeParam):163:164 -> initWithParam
+    6:7:void initWithParam(android.content.Context,com.zhuge.analysis.stat.ZhugeParam):166:167 -> initWithParam
+    8:8:void initWithParam(android.content.Context,com.zhuge.analysis.stat.ZhugeParam):169:169 -> initWithParam
+    1:1:boolean isEnableAutoTrack():99:99 -> isEnableAutoTrack
+    1:1:boolean isInitDeepShare():108:108 -> isInitDeepShare
+    1:2:void onMsgReaded(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):347:348 -> onMsgReaded
+    3:3:void onMsgReaded(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):351:351 -> onMsgReaded
+    4:4:void onMsgReaded(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):353:353 -> onMsgReaded
+    1:2:void onMsgRecved(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):358:359 -> onMsgRecved
+    3:3:void onMsgRecved(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):362:362 -> onMsgRecved
+    4:4:void onMsgRecved(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.Object):364:364 -> onMsgRecved
+    1:1:void openAutoTrack():96:96 -> openAutoTrack
+    1:1:void openDebug():89:89 -> openDebug
+    1:1:void openExceptionTrack():93:93 -> openExceptionTrack
+    1:1:void openLog():85:85 -> openLog
+    1:1:void setLogLevel(int):116:116 -> setLogLevel
+    1:1:void setMaxLocalSize(int):76:76 -> setMaxLocalSize
+    1:1:void setMaxSendSize(int):81:81 -> setMaxSendSize
+    1:1:void setPlatform(org.json.JSONObject):370:370 -> setPlatform
+    2:3:void setPlatform(org.json.JSONObject):374:375 -> setPlatform
+    4:4:void setPlatform(org.json.JSONObject):371:371 -> setPlatform
+    1:1:void setSuperProperty(org.json.JSONObject):379:379 -> setSuperProperty
+    2:3:void setSuperProperty(org.json.JSONObject):383:384 -> setSuperProperty
+    4:4:void setSuperProperty(org.json.JSONObject):380:380 -> setSuperProperty
+    1:1:void setThirdPartyPushUserId(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.String):335:335 -> setThirdPartyPushUserId
+    2:3:void setThirdPartyPushUserId(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.String):338:339 -> setThirdPartyPushUserId
+    4:5:void setThirdPartyPushUserId(com.zhuge.analysis.stat.ZhugeSDK$PushChannel,java.lang.String):342:343 -> setThirdPartyPushUserId
+    1:2:void setUploadURL(java.lang.String,java.lang.String):139:140 -> setUploadURL
+    3:8:void setUploadURL(java.lang.String,java.lang.String):145:150 -> setUploadURL
+    9:9:void setUploadURL(java.lang.String,java.lang.String):141:141 -> setUploadURL
+    1:1:void setUtm(org.json.JSONObject):130:130 -> setUtm
+    1:1:void setZGSeeEnable(boolean):154:154 -> setZGSeeEnable
+    1:1:void startTrack(java.lang.String):247:247 -> startTrack
+    1:1:void track(android.content.Context,java.lang.String):291:291 -> track
+    2:2:void track(android.content.Context,java.lang.String):295:295 -> track
+    3:3:void track(android.content.Context,java.lang.String):292:292 -> track
+    4:4:void track(android.content.Context,java.lang.String,org.json.JSONObject):299:299 -> track
+    5:6:void track(android.content.Context,java.lang.String,org.json.JSONObject):303:304 -> track
+    7:7:void track(android.content.Context,java.lang.String,org.json.JSONObject):300:300 -> track
+    8:8:void track(android.content.Context,java.lang.String,java.util.HashMap):309:309 -> track
+    9:10:void track(android.content.Context,java.lang.String,java.util.HashMap):312:313 -> track
+    1:1:void trackRevenue(android.content.Context,java.util.HashMap):263:263 -> trackRevenue
+    2:3:void trackRevenue(android.content.Context,java.util.HashMap):266:267 -> trackRevenue
+    4:6:void trackRevenue(android.content.Context,org.json.JSONObject):274:276 -> trackRevenue
+    7:9:void trackRevenue(android.content.Context,org.json.JSONObject):278:280 -> trackRevenue
+    10:10:void trackRevenue(android.content.Context,org.json.JSONObject):283:283 -> trackRevenue
+    11:12:void trackRevenue(android.content.Context,org.json.JSONObject):286:287 -> trackRevenue
+    1:2:void zgOnFailed(java.lang.String):50:51 -> zgOnFailed
+    1:3:void zgOnInAppDataReturned(org.json.JSONObject):57:59 -> zgOnInAppDataReturned
+    4:4:void zgOnInAppDataReturned(org.json.JSONObject):61:61 -> zgOnInAppDataReturned
 com.zhuge.analysis.stat.ZhugeSDK$1 -> com.zhuge.analysis.stat.j:
 com.zhuge.analysis.stat.ZhugeSDK$PushChannel -> com.zhuge.analysis.stat.ZhugeSDK$PushChannel:
-    1:1:void <clinit>():384:384 -> <clinit>
-    2:2:void <clinit>():383:383 -> <clinit>
-    1:2:void <init>(java.lang.String,int,java.lang.String):388:389 -> <init>
-    1:1:java.lang.String toString():394:394 -> toString
-    1:1:com.zhuge.analysis.stat.ZhugeSDK$PushChannel valueOf(java.lang.String):383:383 -> valueOf
-    1:1:com.zhuge.analysis.stat.ZhugeSDK$PushChannel[] values():383:383 -> values
+    1:1:void <clinit>():396:396 -> <clinit>
+    2:2:void <clinit>():395:395 -> <clinit>
+    1:2:void <init>(java.lang.String,int,java.lang.String):400:401 -> <init>
+    1:1:java.lang.String toString():406:406 -> toString
+    1:1:com.zhuge.analysis.stat.ZhugeSDK$PushChannel valueOf(java.lang.String):395:395 -> valueOf
+    1:1:com.zhuge.analysis.stat.ZhugeSDK$PushChannel[] values():395:395 -> values
 com.zhuge.analysis.stat.ZhugeSDK$SingletonHolder -> com.zhuge.analysis.stat.ZhugeSDK$a:
     com.zhuge.analysis.stat.ZhugeSDK instance -> a
-    1:1:void <clinit>():43:43 -> <clinit>
-    1:1:com.zhuge.analysis.stat.ZhugeSDK access$100():42:42 -> a
+    1:1:void <clinit>():45:45 -> <clinit>
+    1:1:com.zhuge.analysis.stat.ZhugeSDK access$100():44:44 -> a
 com.zhuge.analysis.stat.ZhugeSDK$ZhugeJS -> com.zhuge.analysis.stat.ZhugeSDK$ZhugeJS:
-    1:1:void <init>():399:399 -> <init>
-    1:1:void autoTrackProperty(java.lang.String,java.lang.String):427:427 -> autoTrackProperty
-    2:4:void autoTrackProperty(java.lang.String,java.lang.String):429:431 -> autoTrackProperty
-    5:6:void autoTrackProperty(java.lang.String,java.lang.String):433:434 -> autoTrackProperty
-    1:1:void identifyProperty(java.lang.String,java.lang.String):416:416 -> identifyProperty
-    2:3:void identifyProperty(java.lang.String,java.lang.String):418:419 -> identifyProperty
-    4:5:void identifyProperty(java.lang.String,java.lang.String):421:422 -> identifyProperty
-    1:1:void trackProperty(java.lang.String,java.lang.String):404:404 -> trackProperty
-    2:3:void trackProperty(java.lang.String,java.lang.String):406:407 -> trackProperty
-    4:5:void trackProperty(java.lang.String,java.lang.String):409:410 -> trackProperty
+    1:1:void <init>():411:411 -> <init>
+    1:1:void autoTrackProperty(java.lang.String,java.lang.String):439:439 -> autoTrackProperty
+    2:4:void autoTrackProperty(java.lang.String,java.lang.String):441:443 -> autoTrackProperty
+    5:6:void autoTrackProperty(java.lang.String,java.lang.String):445:446 -> autoTrackProperty
+    1:1:void identifyProperty(java.lang.String,java.lang.String):428:428 -> identifyProperty
+    2:3:void identifyProperty(java.lang.String,java.lang.String):430:431 -> identifyProperty
+    4:5:void identifyProperty(java.lang.String,java.lang.String):433:434 -> identifyProperty
+    1:1:void trackProperty(java.lang.String,java.lang.String):416:416 -> trackProperty
+    2:3:void trackProperty(java.lang.String,java.lang.String):418:419 -> trackProperty
+    4:5:void trackProperty(java.lang.String,java.lang.String):421:422 -> trackProperty
 com.zhuge.analysis.util.ActivityServicesUtils -> com.zhuge.analysis.a.a:
     android.app.ActivityManager activityManager -> a
     1:2:void <init>(android.content.Context):18:19 -> <init>
@@ -1538,55 +1548,50 @@ com.zhuge.analysis.util.ManifestUtils -> com.zhuge.analysis.a.g:
     6:7:java.lang.String[] getManifestInfo(android.content.Context):34:35 -> a
 com.zhuge.analysis.util.Utils -> com.zhuge.analysis.a.h:
     java.lang.String publicKey -> a
-    1:1:java.lang.String md5(java.lang.String):52:52 -> a
-    2:3:java.lang.String md5(java.lang.String):59:60 -> a
-    4:5:java.lang.String md5(java.lang.String):62:63 -> a
-    6:6:java.lang.String md5(java.lang.String):65:65 -> a
-    7:7:java.lang.String md5(java.lang.String):56:56 -> a
-    8:8:java.lang.String md5(java.lang.String):54:54 -> a
-    9:11:org.json.JSONObject cloneJSONObject(org.json.JSONObject):140:142 -> a
-    12:16:org.json.JSONObject cloneJSONObject(org.json.JSONObject):144:148 -> a
-    17:17:org.json.JSONObject cloneJSONObject(org.json.JSONObject):150:150 -> a
-    18:18:org.json.JSONObject cloneJSONObject(org.json.JSONObject):154:154 -> a
-    19:20:java.lang.String timeStamp2Date(long):160:161 -> a
-    21:21:java.lang.String parseUrl(java.lang.String,java.lang.String,java.lang.String):164:164 -> a
-    22:25:java.lang.String parseUrl(java.lang.String,java.lang.String,java.lang.String):167:170 -> a
-    26:26:java.lang.String parseUrl(java.lang.String,java.lang.String,java.lang.String):172:172 -> a
-    27:27:java.lang.String parseUrl(java.lang.String,java.lang.String,java.lang.String):174:174 -> a
-    28:29:java.lang.String parseUrl(java.lang.String,java.lang.String,java.lang.String):176:177 -> a
-    30:31:java.lang.String parseUrl(java.lang.String,java.lang.String,java.lang.String):179:180 -> a
-    32:32:java.lang.String parseUrl(java.lang.String,java.lang.String,java.lang.String):182:182 -> a
-    33:35:javax.crypto.SecretKey getAESKey():186:188 -> a
-    36:36:javax.crypto.SecretKey getAESKey():190:190 -> a
-    37:37:java.lang.String AESEncrypt(javax.crypto.SecretKey,byte[]):208:208 -> a
-    38:40:java.lang.String AESEncrypt(javax.crypto.SecretKey,byte[]):210:212 -> a
-    41:41:java.lang.String AESEncrypt(javax.crypto.SecretKey,byte[]):214:214 -> a
-    42:42:java.lang.String AESEncrypt(javax.crypto.SecretKey,byte[]):203:203 -> a
-    43:49:byte[] compress(byte[]):222:228 -> a
-    50:50:byte[] compress(byte[]):230:230 -> a
-    1:2:java.lang.String publicKeyEncodeRSA(byte[]):69:70 -> b
-    3:8:java.lang.String publicKeyEncodeRSA(byte[]):75:80 -> b
-    9:9:java.lang.String publicKeyEncodeRSA(byte[]):82:82 -> b
-    10:10:java.lang.String publicKeyEncodeRSA(byte[]):85:85 -> b
-    11:11:java.lang.String publicKeyEncodeRSA(byte[]):87:87 -> b
-    12:13:int getTimeZone():91:92 -> b
-    14:14:org.json.JSONObject conversionRevenuePropertiesKey(org.json.JSONObject):106:106 -> b
-    15:15:org.json.JSONObject conversionRevenuePropertiesKey(org.json.JSONObject):108:108 -> b
-    16:16:org.json.JSONObject conversionRevenuePropertiesKey(org.json.JSONObject):110:110 -> b
-    17:17:org.json.JSONObject conversionRevenuePropertiesKey(org.json.JSONObject):112:112 -> b
-    18:22:org.json.JSONObject conversionRevenuePropertiesKey(org.json.JSONObject):114:118 -> b
-    23:23:org.json.JSONObject conversionRevenuePropertiesKey(org.json.JSONObject):122:122 -> b
+    1:1:java.lang.String md5(java.lang.String):53:53 -> a
+    2:3:java.lang.String md5(java.lang.String):60:61 -> a
+    4:5:java.lang.String md5(java.lang.String):63:64 -> a
+    6:6:java.lang.String md5(java.lang.String):66:66 -> a
+    7:7:java.lang.String md5(java.lang.String):57:57 -> a
+    8:8:java.lang.String md5(java.lang.String):55:55 -> a
+    9:11:org.json.JSONObject cloneJSONObject(org.json.JSONObject):141:143 -> a
+    12:16:org.json.JSONObject cloneJSONObject(org.json.JSONObject):145:149 -> a
+    17:17:org.json.JSONObject cloneJSONObject(org.json.JSONObject):151:151 -> a
+    18:18:org.json.JSONObject cloneJSONObject(org.json.JSONObject):155:155 -> a
+    19:20:java.lang.String timeStamp2Date(long):161:162 -> a
+    21:21:java.lang.String parseUrl(java.lang.String,java.lang.String,java.lang.String):165:165 -> a
+    22:25:java.lang.String parseUrl(java.lang.String,java.lang.String,java.lang.String):168:171 -> a
+    26:26:java.lang.String parseUrl(java.lang.String,java.lang.String,java.lang.String):173:173 -> a
+    27:27:java.lang.String parseUrl(java.lang.String,java.lang.String,java.lang.String):175:175 -> a
+    28:29:java.lang.String parseUrl(java.lang.String,java.lang.String,java.lang.String):177:178 -> a
+    30:31:java.lang.String parseUrl(java.lang.String,java.lang.String,java.lang.String):180:181 -> a
+    32:32:java.lang.String parseUrl(java.lang.String,java.lang.String,java.lang.String):183:183 -> a
+    33:35:javax.crypto.SecretKey getAESKey():187:189 -> a
+    36:36:javax.crypto.SecretKey getAESKey():191:191 -> a
+    37:37:java.lang.String AESEncrypt(javax.crypto.SecretKey,byte[]):209:209 -> a
+    38:40:java.lang.String AESEncrypt(javax.crypto.SecretKey,byte[]):211:213 -> a
+    41:41:java.lang.String AESEncrypt(javax.crypto.SecretKey,byte[]):215:215 -> a
+    42:42:java.lang.String AESEncrypt(javax.crypto.SecretKey,byte[]):204:204 -> a
+    43:49:byte[] compress(byte[]):223:229 -> a
+    50:50:byte[] compress(byte[]):231:231 -> a
+    1:2:java.lang.String publicKeyEncodeRSA(byte[]):70:71 -> b
+    3:8:java.lang.String publicKeyEncodeRSA(byte[]):76:81 -> b
+    9:9:java.lang.String publicKeyEncodeRSA(byte[]):83:83 -> b
+    10:10:java.lang.String publicKeyEncodeRSA(byte[]):86:86 -> b
+    11:11:java.lang.String publicKeyEncodeRSA(byte[]):88:88 -> b
+    12:13:int getTimeZone():92:93 -> b
+    14:14:org.json.JSONObject conversionRevenuePropertiesKey(org.json.JSONObject):107:107 -> b
+    15:15:org.json.JSONObject conversionRevenuePropertiesKey(org.json.JSONObject):109:109 -> b
+    16:16:org.json.JSONObject conversionRevenuePropertiesKey(org.json.JSONObject):111:111 -> b
+    17:17:org.json.JSONObject conversionRevenuePropertiesKey(org.json.JSONObject):113:113 -> b
+    18:22:org.json.JSONObject conversionRevenuePropertiesKey(org.json.JSONObject):115:119 -> b
+    23:23:org.json.JSONObject conversionRevenuePropertiesKey(org.json.JSONObject):123:123 -> b
 com.zhuge.analysis.util.WifiInfoUtils -> com.zhuge.analysis.a.i:
     android.net.wifi.WifiManager wifiManager -> a
     1:2:void <init>(android.content.Context):14:15 -> <init>
     1:1:java.lang.String getMacAddress():19:19 -> a
     2:2:java.lang.String getMacAddress():21:21 -> a
-com.zhuge.analysis.util.ZGJSONObject -> com.zhuge.analysis.a.j:
-    1:1:void <init>():13:13 -> <init>
-    1:5:java.lang.String getCode(com.zhuge.analysis.util.ZGJSONObject):30:34 -> a
-    1:1:boolean equals(java.lang.Object):26:26 -> equals
-    1:3:int hashCode():19:21 -> hashCode
-com.zhuge.analysis.util.ZGLogger -> com.zhuge.analysis.a.k:
+com.zhuge.analysis.util.ZGLogger -> com.zhuge.analysis.a.j:
     boolean logEnable -> a
     int logLevel -> b
     1:1:void setLogLevel(int):17:17 -> a

@@ -142,7 +142,7 @@ import java.util.Map;
 
     public void onException(Thread thread,Throwable ex) {
         boolean isForgound = foregroundActivities>0;
-        ZGJSONObject object = appInfo.buildException(thread, ex, isForgound);
+        JSONObject object = appInfo.buildException(thread, ex, isForgound);
         sendObjMessage(Constants.MESSAGE_NEED_SEND,object);
     }
 
@@ -266,13 +266,14 @@ import java.util.Map;
                         }
                     }
                 }
+
             }
             int stateCode = -1;
             switch (msg.what){
 
                 case Constants.MESSAGE_DEVICE_INFO:
 
-                    ZGJSONObject deviceInfo = appInfo.buildDeviceInfo(mContext,msg.arg1 == 1);
+                    JSONObject deviceInfo = appInfo.buildDeviceInfo(mContext,msg.arg1 == 1);
                     if (deviceInfo == null){
                         break;
                     }
@@ -291,7 +292,7 @@ import java.util.Map;
                     if (appInfo.sessionID<0 && appInfo.isInMainThread){
                         startNewSessionIfNeed("et_in_main_thread");
                     }
-                    ZGJSONObject info = appInfo.buildCustomEvent(name,pro);
+                    JSONObject info = appInfo.buildCustomEvent(name,pro);
                     updateSessionActivity("自定义事件更新会话");
                     stateCode = addEvent(info);
                     break;
@@ -300,7 +301,7 @@ import java.util.Map;
                     EventDescription revenueDes = (EventDescription) msg.obj;
                     String revenueName = revenueDes.eventName;
                     JSONObject revenuePro = revenueDes.properties;
-                    ZGJSONObject revenueInfo = appInfo.buildRevenueEvent(revenueName,revenuePro);
+                    JSONObject revenueInfo = appInfo.buildRevenueEvent(revenueName,revenuePro);
                     updateSessionActivity("收入事件更新会话");
                     stateCode = addEvent(revenueInfo);
                     break;
@@ -308,7 +309,7 @@ import java.util.Map;
                     EventDescription userDes = (EventDescription) msg.obj;
                     String uid = userDes.eventName;
                     JSONObject uPro = userDes.properties;
-                    ZGJSONObject userPro = appInfo.buildIdentify(uid,uPro);
+                    JSONObject userPro = appInfo.buildIdentify(uid,uPro);
                     updateCUID(uid);
                     updateSessionActivity("标记用户更新会话");
                     addEvent(userPro);
@@ -327,7 +328,7 @@ import java.util.Map;
                     break;
 
                 case Constants.MESSAGE_NEED_SEND:
-                    ZGJSONObject data = (ZGJSONObject) msg.obj;
+                    JSONObject data = (JSONObject) msg.obj;
                     addEvent(data);
                     if (ZhugeSDK.getInstance().isInitDeepShare()) {
                         flushEventWithDeepShare();
@@ -507,12 +508,12 @@ import java.util.Map;
                 if (properties == null){
                     JSONObject obj = new JSONObject();
                     obj.put("$dru",dru);
-                    ZGJSONObject zgjsonObject = appInfo.buildCustomEvent(event_name, obj);
-                    return addEvent(zgjsonObject);
+                    JSONObject jsonObject = appInfo.buildCustomEvent(event_name, obj);
+                    return addEvent(jsonObject);
                 }else {
                     properties.put("$dru",dru);
-                    ZGJSONObject zgjsonObject = appInfo.buildCustomEvent(event_name,properties);
-                    return addEvent(zgjsonObject);
+                    JSONObject jsonObject = appInfo.buildCustomEvent(event_name,properties);
+                    return addEvent(jsonObject);
                 }
             }catch (Exception e){
                 ZGLogger.handleException(TAG,"时长追踪事件错误",e);
@@ -565,7 +566,7 @@ import java.util.Map;
             if (Constants.ENABLE_SESSION_TRACK){
                 completeLastSession();
                 zgWorker.sendEmptyMessage(Constants.MESSAGE_DEVICE_INFO);//发送设备信息
-                ZGJSONObject st = appInfo.buildSessionStart(name);
+                JSONObject st = appInfo.buildSessionStart(name);
                 if (null == st)
                     return;
                 addEvent(st);
@@ -578,7 +579,7 @@ import java.util.Map;
         }
 
         private void completeLastSession() {
-            ZGJSONObject se = appInfo.buildSessionEnd();
+            JSONObject se = appInfo.buildSessionEnd();
             if (null == se)
                 return;
             addEvent(se);
@@ -597,9 +598,10 @@ import java.util.Map;
                 ZGLogger.logError(TAG,"本地存储事件超过最大值，事件将被丢弃。");
                 return -1;
             }
-            if (null == event){
+            if (event == null){
                 return -1;
             }
+
             ZGLogger.logVerbose("添加事件\n"+event.toString());
             int count =  dbAdapter.addEvent(event);
             localEventSize = count;

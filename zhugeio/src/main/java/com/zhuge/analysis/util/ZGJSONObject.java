@@ -1,6 +1,8 @@
 package com.zhuge.analysis.util;
 
 
+import com.zhuge.analysis.deepshare.utils.Log;
+
 import org.json.JSONObject;
 
 /**
@@ -16,6 +18,12 @@ public class ZGJSONObject extends JSONObject {
 
     @Override
     public int hashCode() {
+//        int temp = ((Integer) this.optInt("ts") != null ? ((Integer) this.optInt("ts")).hashCode() : 1) ^
+//                ((Integer) this.optInt("sid") != null ? ((Integer) this.optInt("sid")).hashCode() : 1) ^
+//                (this.optString("et") != null ? this.optString("et").hashCode() : 1);
+//
+//        Log.i("===----",String.valueOf(temp));
+
         return ((Integer) this.optInt("ts") != null ? ((Integer) this.optInt("ts")).hashCode() : 1) ^
                 ((Integer) this.optInt("sid") != null ? ((Integer) this.optInt("sid")).hashCode() : 1) ^
                 (this.optString("et") != null ? this.optString("et").hashCode() : 1);

@@ -64,7 +64,7 @@ public class Constants {
 //    static int UPLOAD_LIMIT_SIZE = 5;
     static int UPLOAD_LIMIT_SIZE = 1;
     static long FLUSH_INTERVAL = 5*1000;
-    static int MAX_LOCAL_SIZE = 500;
+    static int MAX_LOCAL_SIZE = 3000;
     public static final int MAX_SEE_SESSION = 5;
     /**
      * 每天发送事件数
@@ -160,8 +160,8 @@ public class Constants {
 //            UPLOAD_LIMIT_SIZE = metaData.getInt("com.zhuge.config.UploadLimit",5); //5条记录上传
             UPLOAD_LIMIT_SIZE = metaData.getInt("com.zhuge.config.UploadLimit",1); //1条记录上传
             FLUSH_INTERVAL = (metaData.getInt("com.zhuge.config.FlushInterval",5))*1000; //数据上传间隔，默认5秒
-            MAX_LOCAL_SIZE = metaData.getInt("com.zhuge.config.MaxLocalSize",500); //本地最大缓存数，默认500
-            SEND_SIZE = metaData.getInt("com.zhuge.config.MaxSendSize",50000); //每日最大上传数，默认500
+            MAX_LOCAL_SIZE = metaData.getInt("com.zhuge.config.MaxLocalSize",3000); //本地最大缓存数，默认3000
+            SEND_SIZE = metaData.getInt("com.zhuge.config.MaxSendSize",50000); //每日最大上传数，默认50000
         }catch (Exception e){
             ZGLogger.handleException("Zhuge.Constants","读取配置信息出错，将使用默认配置",e);
         }

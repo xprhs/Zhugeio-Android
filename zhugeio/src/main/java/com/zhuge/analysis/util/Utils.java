@@ -22,6 +22,7 @@ import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.TimeZone;
 import java.util.zip.Deflater;
@@ -263,6 +264,17 @@ public class Utils {
         }catch (Exception e){
             ZGLogger.handleException(TAG,"drawMosaic get error",e);
         }
+    }
+
+    public static String arrayListToString(ArrayList list, String separator) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            sb.append(list.get(i));
+            if (i < list.size() - 1) {
+                sb.append(separator);
+            }
+        }
+        return sb.toString();
     }
 
 }

@@ -19,6 +19,7 @@ import android.widget.EditText;
 import com.zhuge.analysis.util.AutoTrackUtils;
 import com.zhuge.analysis.util.DeviceInfoUtils;
 import com.zhuge.analysis.util.ZGLogger;
+import com.zhuge.analysis.util.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,6 +27,7 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.WeakHashMap;
 
 /**
@@ -54,9 +56,13 @@ public class ZhugeCallbacks implements Application.ActivityLifecycleCallbacks, V
 
     private JSONArray editableTextRects;
     private int currentSize = 0;
+    private boolean firstActivity = true;
     private boolean mosaicIsOk = false;
     private String url = "";
     private String title = "";
+    private String ref_selector = "";
+    private String ref_url = "";
+    private ArrayList<String> urlList;
 
     public ZhugeCallbacks(ZGCore core){
         mCore = core;
@@ -66,6 +72,8 @@ public class ZhugeCallbacks implements Application.ActivityLifecycleCallbacks, V
             getListenerInfo.setAccessible(true);
             mListener = new newRecordTouchListener();
             viewCollection = new WeakHashMap<>();
+            urlList = new ArrayList<String>();
+            urlList.add("Root");
             editableTextRects = new JSONArray();
         } catch (Exception e) {
             e.printStackTrace();
@@ -74,17 +82,27 @@ public class ZhugeCallbacks implements Application.ActivityLifecycleCallbacks, V
 
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+
     }
 
     @Override
     public void onActivityStarted(Activity activity) {
-
     }
+
 
     @Override
     public void onActivityResumed(Activity activity) {
+//        Log.i(TAG,"==onActivityResumed");
         startTime = System.currentTimeMillis();
+        title = AutoTrackUtils.getActivityTitle(activity);
         currentActivityName = activity.getLocalClassName();
+        url = activity.getClass().getCanonicalName();
+        ZhugeSDK.getInstance().url = url;
+        urlList.add(url);
+        if (urlList.size() > 1) {
+            ZhugeSDK.getInstance().ref = urlList.get(urlList.size() - 2);
+        }
+
         mCore.onEnterForeground("resu_"+ currentActivityName);
         mCore.pageName = currentActivityName;
         currentActivityUrl = activity.getClass().getCanonicalName();
@@ -102,23 +120,19 @@ public class ZhugeCallbacks implements Application.ActivityLifecycleCallbacks, V
         if (!ZhugeSDK.getInstance().isEnableAutoTrack()){
             return;
         }
-        url = activity.getClass().getCanonicalName();
-        title = AutoTrackUtils.getActivityTitle(activity);
+
+
         try {
             JSONObject object = new JSONObject();
             object.put("$url",url);
             object.put("$page_title",title);
+//            object.put("$ref_selector",ref_selector);
+            object.put("$ref",ZhugeSDK.getInstance().ref);
             object.put("$eid","pv");
             mCore.sendObjMessage(Constants.MESSAGE_AUTO_TRACK,object);
         }catch (Exception e){
             //ignore
         }
-//        if (!mainHandler.hasMessages(0)){
-//            mainHandler.sendEmptyMessageDelayed(0,1000);
-//        }
-//        if (!mainHandler.hasMessages(1)){
-//            mainHandler.sendEmptyMessageDelayed(1,2000);
-//        }
     }
 
     @Override
@@ -505,6 +519,7 @@ public class ZhugeCallbacks implements Application.ActivityLifecycleCallbacks, V
                 obj.put("$element_type",v.getClass().getSimpleName());
                 obj.put("$url",url);
                 obj.put("$page_title",title);
+                obj.put("$ref",ZhugeSDK.getInstance().ref);
                 obj.put("$eid","click");
                 mCore.sendObjMessage(Constants.MESSAGE_AUTO_TRACK,obj);
             }catch (Exception e){
