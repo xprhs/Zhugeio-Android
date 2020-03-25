@@ -478,7 +478,7 @@ import javax.crypto.SecretKey;
             long info_ts = globalSP.getLong(Constants.SP_UPDATE_DEVICE_TIME, -1);
             long now_t = System.currentTimeMillis();
 //            || info_ts == -1 || (now_t / 86400000 - info_ts / 86400000) >= 1
-            if (force) {
+//            if (force) {
                 JSONObject infoObject = new JSONObject();
                 infoObject.put("dt", EVENT_TYPE_PLATFORM);
                 JSONObject pr = dataCommon();
@@ -506,9 +506,9 @@ import javax.crypto.SecretKey;
                 pr.put("$vn",null);
                 infoObject.put("pr",pr);
                 return infoObject;
-            } else {
-                return null;
-            }
+//            } else {
+//                return null;
+//            }
         } catch (Exception e) {
             ZGLogger.handleException(TAG,"获取设备信息出错",e);
             return null;
